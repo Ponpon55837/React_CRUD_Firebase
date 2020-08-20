@@ -17,3 +17,8 @@ export const footerStyle = {
 export const jumbotronStyle = {
   marginTop: '0'
 }
+
+export const imageStyle = {
+  width: '38px',
+  height: '38px'
+}

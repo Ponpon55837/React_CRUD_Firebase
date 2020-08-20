@@ -1,5 +1,8 @@
 import * as firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/firestore'
+import 'firebase/storage'
+import 'firebase/auth'
 
 var firebaseConfig = {
     apiKey: "AIzaSyAYxBKTuy9fUOz3lGMExaUfVYEoPREDANs",
@@ -15,3 +18,14 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   export const projectDB = firebase.database().ref()
+  export const porjectAuth = firebase.auth()
+  export const projectStorage = firebase.storage()
+  export const projectFirestore = firebase.firestore()
+  export const timestamp = firebase.firestore.FieldValue.serverTimestamp
+
+  export const porjectAuthGoogle = new firebase.auth.GoogleAuthProvider();
+    porjectAuthGoogle.setCustomParameters({
+      promt: "select_account",
+    })
+  export const signInWithGoogle = () => porjectAuth.signInWithPopup(porjectAuthGoogle)
+  export const signOut = () => porjectAuth.signOut()
