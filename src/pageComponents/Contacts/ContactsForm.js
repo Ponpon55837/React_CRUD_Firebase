@@ -12,7 +12,7 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
   const [values, setValues] = useState(initialFieldValues)
 
   useEffect(() => {
-    if(currentID == '') {
+    if(currentID === '') {
       setValues({
         ...initialFieldValues
       })
@@ -25,17 +25,18 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
   },[currentID, contactsObj])
 
   const handlerInputChange = (e) => {
-    const { name,value } = e.target
+    const { name, value } = e.target
     setValues({
       // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
       ...values,
       [name]: value
-    },[])
+    })
   }
 
   const handlerFormSubmit = (e) => {
     e.preventDefault()
     addOrEdit(values)
+    setValues('')
   }
 
   return (
@@ -54,7 +55,7 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
         ))
       }
       <Button variant="primary" type="submit">
-        {currentID == '' ? 'Submit' : 'Update'}
+        {currentID === '' ? 'Submit' : 'Update'}
       </Button>
     </Form>
   )
