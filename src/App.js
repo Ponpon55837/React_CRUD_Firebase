@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
-import Contacts from './pageComponents/Contacts'
+import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/ProfilePage'
 import { Container } from 'react-bootstrap'
 
