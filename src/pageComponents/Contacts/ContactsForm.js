@@ -12,7 +12,7 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
   const [values, setValues] = useState(initialFieldValues)
 
   useEffect(() => {
-    if(currentID === '') {
+    if(currentID == '') {
       setValues({
         ...initialFieldValues
       })
@@ -36,29 +36,69 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
   const handlerFormSubmit = (e) => {
     e.preventDefault()
     addOrEdit(values)
-    setValues('')
   }
 
   return (
     <Form className='my-2' onSubmit={handlerFormSubmit}>
-      {
-        getContactsFormContent().map(content => (
-          <Form.Group controlId={content.controlId} key={content.id}>
-            <Form.Label>{content.Label}</Form.Label>
-            <input
-              className='form-control'
-              placeholder={content.placeholder}
-              name={content.name}
-              value={values.name}
-              onChange={handlerInputChange} />
-          </Form.Group>
-        ))
-      }
+      <Form.Group controlId='formFullName'>
+        <Form.Label>Full Name</Form.Label>
+        <input
+          className='form-control'
+          placeholder='Input Full Name'
+          name='fullName'
+          value={values.fullName}
+          onChange={handlerInputChange} />
+      </Form.Group>
+
+      <Form.Group controlId='formMobile'>
+        <Form.Label>Mobile</Form.Label>
+        <input
+          className='form-control'
+          placeholder='Input Mobile'
+          name='mobile'
+          value={values.mobile}
+          onChange={handlerInputChange} />
+      </Form.Group>
+
+      <Form.Group controlId='formEmail'>
+        <Form.Label>Email</Form.Label>
+        <input
+          className='form-control'
+          placeholder='Input E-mail'
+          name='email'
+          value={values.email}
+          onChange={handlerInputChange} />
+      </Form.Group>
+
+      <Form.Group controlId='formAddress'>
+        <Form.Label>Address</Form.Label>
+        <input
+          className='form-control'
+          placeholder='IInput Address'
+          name='address'
+          value={values.address}
+          onChange={handlerInputChange} />
+      </Form.Group>
       <Button variant="primary" type="submit">
-        {currentID === '' ? 'Submit' : 'Update'}
+        {currentID == '' ? 'Submit' : 'Update'}
       </Button>
     </Form>
   )
 }
 
 export default ContactsForm
+
+
+// {
+//   getContactsFormContent().map(content => (
+//     <Form.Group controlId={content.controlId} key={content.id}>
+//       <Form.Label>{content.Label}</Form.Label>
+//       <input
+//         className='form-control'
+//         placeholder={content.placeholder}
+//         name={content.name}
+//         value={values.name}
+//         onChange={handlerInputChange} />
+//     </Form.Group>
+//   ))
+// }

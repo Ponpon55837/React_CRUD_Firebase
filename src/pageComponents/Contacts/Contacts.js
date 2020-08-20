@@ -25,7 +25,7 @@ const Contacts = () => {
 
   // 新增資料或是編輯，新增使用push，編輯則用set
   const addOrEdit = (obj) => {
-    if(currentID === '') {
+    if(currentID == '') {
       projectDB.child('contacts').push(
         obj,
         error => {
