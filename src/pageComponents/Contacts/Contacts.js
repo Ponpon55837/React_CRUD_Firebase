@@ -3,11 +3,12 @@ import ContactsForm from './ContactsForm'
 import ContactsTable from './ContactsTable'
 import { projectDB } from '../../firebase/Config'
 import { jumbotronStyle } from '../../style/style.js'
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap'
+import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
 
 const Contacts = () => {
   const [contactsObj, setContactsObj] = useState({})
   const [currentID, setCurrentId] = useState('')
+  const [page, setPage] = useState('Table')
 
   useEffect(() => {
     // 串接已經有的內容，如果在contacts這個表頭底下有值，串接已有的內容，沒有的話就做一個空的物件
@@ -73,14 +74,16 @@ const Contacts = () => {
     <>
       <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12}>
         <h1>Contacts Register</h1>
+        <Button className='m-2' variant="outline-primary" onClick={() => setPage('Table')}>Table</Button>
+        <Button className='m-2' variant="outline-primary" onClick={() => setPage('Form')}>Form</Button>
       </Jumbotron>
       <Container>
         <Row>
-          <Col xs={12} sm={12} md={12} lg={5} xl={5}>
-            <ContactsForm {...({ addOrEdit, currentID, contactsObj })} />
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={7} xl={7}>
-            <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} />
+          <Col>
+            { page === 'Table' ?
+              <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} /> :
+              <ContactsForm {...({ addOrEdit, currentID, contactsObj })} />               
+            }
           </Col>
         </Row>
       </Container>

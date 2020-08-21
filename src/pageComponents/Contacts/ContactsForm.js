@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getContactsFormContent } from '../../functionComponents/ContactsFunction'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Alert } from 'react-bootstrap'
 
 const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
   const initialFieldValues = {
@@ -74,7 +74,7 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
         <Form.Label>Address</Form.Label>
         <input
           className='form-control'
-          placeholder='IInput Address'
+          placeholder='Input Address'
           name='address'
           value={values.address}
           onChange={handlerInputChange} />
