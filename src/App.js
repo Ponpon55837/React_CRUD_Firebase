@@ -5,7 +5,7 @@ import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/ProfilePage'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { porjectAuth } from "./firebase/Config"
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container } from 'react-bootstrap'
 
 const App = () => {
