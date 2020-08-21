@@ -1,18 +1,18 @@
 import React from 'react'
-import { Jumbotron, Button } from 'react-bootstrap'
+import { Jumbotron, Image, ListGroup } from 'react-bootstrap'
 
-const Profile = () => {
+const Profile = ({ currentUser }) => {
 
   return (
     <Jumbotron>
-      <h1>Hello</h1>
-      <p>
-        This is a simple hero unit, a simple jumbotron-style component for calling
-        extra attention to featured content or information.
-      </p>
-      <p>
-        <Button variant="primary">Learn more</Button>
-      </p>
+      <h1>Welcome Back {currentUser.displayName}</h1>
+      <Image className='my-2' src={currentUser.photoURL} rounded />
+      <ListGroup className='my-2'>
+        <ListGroup.Item>Email： {currentUser.email}</ListGroup.Item>
+        <ListGroup.Item>Email驗證： {currentUser.emailVerified ? <>是</> : <>否</>}</ListGroup.Item>
+        <ListGroup.Item>建立時間： {currentUser.metadata.creationTime}</ListGroup.Item>
+        <ListGroup.Item>最後登入時間： {currentUser.metadata.lastSignInTime}</ListGroup.Item>
+      </ListGroup>
     </Jumbotron>
   )
 }

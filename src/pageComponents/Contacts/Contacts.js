@@ -26,7 +26,7 @@ const Contacts = () => {
 
   // 新增資料或是編輯，新增使用push，編輯則用set
   const addOrEdit = (obj) => {
-    if(currentID == '') {
+    if(currentID === '') {
       projectDB.child('contacts').push(
         obj,
         error => {
@@ -76,17 +76,17 @@ const Contacts = () => {
         <h1>Contacts Register</h1>
         <Button className='m-2' variant="outline-primary" onClick={() => setPage('Table')}>Table</Button>
         <Button className='m-2' variant="outline-primary" onClick={() => setPage('Form')}>Form</Button>
+        <Container className='my-2'>
+          <Row>
+            <Col>
+              { page === 'Table' ?
+                <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} /> :
+                <ContactsForm {...({ addOrEdit, currentID, contactsObj })} />
+              }
+            </Col>
+          </Row>
+        </Container>
       </Jumbotron>
-      <Container>
-        <Row>
-          <Col>
-            { page === 'Table' ?
-              <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} /> :
-              <ContactsForm {...({ addOrEdit, currentID, contactsObj })} />               
-            }
-          </Col>
-        </Row>
-      </Container>
     </>
   )
 }

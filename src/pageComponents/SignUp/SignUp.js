@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
+const SignUp = ({ addOrEdit }) => {
   const initialFieldValues = {
     fullName: '',
     mobile: '',
     email: '',
+    password: '',
     address: ''
   }
-  const [values, setValues] = useState(initialFieldValues)
 
-  useEffect(() => {
-    if(currentID === '') {
-      setValues({
-        ...initialFieldValues
-      })
-    }
-    else {
-      setValues({
-        ...contactsObj[currentID]
-      })
-    }
-  },[currentID, contactsObj])
+  const [values, setValues] = useState(initialFieldValues)
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
@@ -69,6 +58,17 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
           onChange={handlerInputChange} />
       </Form.Group>
 
+      <Form.Group controlId='formPassword'>
+        <Form.Label>Password</Form.Label>
+        <input
+          type='password'
+          className='form-control'
+          placeholder='Input password'
+          name='password'
+          value={values.password}
+          onChange={handlerInputChange} />
+      </Form.Group>
+
       <Form.Group controlId='formAddress'>
         <Form.Label>Address</Form.Label>
         <textarea
@@ -79,25 +79,10 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
           onChange={handlerInputChange} />
       </Form.Group>
       <Button variant="primary" type="submit">
-        {currentID === '' ? 'Submit' : 'Update'}
+        Submit
       </Button>
     </Form>
   )
 }
 
-export default ContactsForm
-
-
-// {
-//   getContactsFormContent().map(content => (
-//     <Form.Group controlId={content.controlId} key={content.id}>
-//       <Form.Label>{content.Label}</Form.Label>
-//       <input
-//         className='form-control'
-//         placeholder={content.placeholder}
-//         name={content.name}
-//         value={values.name}
-//         onChange={handlerInputChange} />
-//     </Form.Group>
-//   ))
-// }
+export default SignUp
