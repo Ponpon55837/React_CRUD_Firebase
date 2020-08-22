@@ -3,6 +3,7 @@ import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/ProfilePage'
+import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { porjectAuth } from "./firebase/Config"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
@@ -10,6 +11,8 @@ import { Container } from 'react-bootstrap'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
+  const [page, setPage] = useState('NotLogIn')
+  console.log(page)
 
   useEffect(() => {
     porjectAuth.onAuthStateChanged(userAuth => {
@@ -25,11 +28,11 @@ const App = () => {
 
   return (
     <>
-      <Navbar currentUser={currentUser} />
+      <Navbar currentUser={currentUser} setPage={setPage} />
       {
         !currentUser ?
         <Container className='mt-3'>
-          <NotLogIn />
+          { page === 'NotLogIn' ? <NotLogIn /> : <SignIn /> }
         </Container> :
         <BrowserRouter>
           <Container className='mt-3'>

@@ -28,4 +28,5 @@ var firebaseConfig = {
       promt: "select_account",
     })
   export const signInWithGoogle = () => porjectAuth.signInWithPopup(porjectAuthGoogle)
+  export const signInWithEmail = () => porjectAuth.signInWithEmailAndPassword()
   export const signOut = () => porjectAuth.signOut()

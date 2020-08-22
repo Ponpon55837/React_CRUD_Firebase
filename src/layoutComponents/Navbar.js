@@ -1,9 +1,10 @@
 import React from 'react'
 import { imageStyle } from '../style/style.js'
-import { signInWithGoogle, signOut } from '../firebase/Config'
-import { Navbar, Nav, Button, Image } from 'react-bootstrap'
+import { signInWithGoogle, signInWithEmail, signOut } from '../firebase/Config'
+import { Link } from "react-router-dom"
+import { Navbar, Nav, Button, Image, Dropdown, DropdownButton } from 'react-bootstrap'
 
-const NavbarConent = ({ currentUser }) => {
+const NavbarConent = ({ currentUser, setPage }) => {
 
   return (
     <Navbar className='position-sticky' bg="dark" variant="dark">
@@ -18,9 +19,20 @@ const NavbarConent = ({ currentUser }) => {
         <Button className='m-2' variant="outline-primary" onClick={signOut}>
           LogOut
         </Button> :
-        <Button className='m-2' variant="outline-primary" onClick={signInWithGoogle}>
-          LogIn
-        </Button>
+        <DropdownButton id="dropdown-item-button" title="LogIn">
+          <Dropdown.Item
+            as="button"
+            variant="outline-primary"
+            onClick={signInWithGoogle}>
+              Google Login
+          </Dropdown.Item>
+          <Dropdown.Item
+            as="button"
+            variant="outline-primary"
+            onClick={() => setPage('SignIn')}>
+              SignIn
+          </Dropdown.Item>
+        </DropdownButton>
       }
       {
         currentUser &&
@@ -42,3 +54,7 @@ export default NavbarConent
 //   <Button className='m-2' variant="outline-primary" onClick={() => setPage('Profile')}>Profile</Button>
 //   <Button className='m-2' variant="outline-primary" onClick={() => setPage('Contacts')}>Contacts</Button>
 // </nav>
+
+// <Button className='m-2' variant="outline-primary" onClick={signInWithGoogle}>
+//   LogIn
+// </Button>

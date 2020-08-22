@@ -1,6 +1,6 @@
 import React from 'react'
 import SignUp from './SignUp/SignUp'
-import { Jumbotron, Button } from 'react-bootstrap'
+import { Jumbotron } from 'react-bootstrap'
 
 const NotLogIn = () => {
 
@@ -8,7 +8,7 @@ const NotLogIn = () => {
     <Jumbotron>
       <h1>Please Log In To Continue</h1>
       <p>
-        You have to log in to unlock more information.
+        If you  don't have an account,please sign up at this form.
       </p>
       <SignUp />
     </Jumbotron>
