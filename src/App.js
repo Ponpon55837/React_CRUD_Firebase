@@ -6,6 +6,7 @@ import Profile from './pageComponents/ProfilePage'
 import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { porjectAuth } from "./firebase/Config"
+import { bgStyle } from './style/style'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container } from 'react-bootstrap'
 
@@ -27,7 +28,7 @@ const App = () => {
   },[])
 
   return (
-    <>
+    <div style={bgStyle}>
       <Navbar currentUser={currentUser} setPage={setPage} />
       {
         !currentUser ?
@@ -48,7 +49,7 @@ const App = () => {
         </BrowserRouter>
       }
       <Footer />
-    </>
+    </div>
   )
 }
 

@@ -1,6 +1,21 @@
-export const navStyle = {
-  backgroundColor: '#1b1b1b',
-  opacity: '0.7'
+import bgImg from '../fileFolder/bgImg.jpg'
+
+export const bgStyle = {
+  background:`url(${bgImg})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  maxWidth: '100%',
+  display: 'block'
+}
+
+export const mainStyle = {
+  position: 'sticky',
+  top:'0',
+  width: '100%',
+  transition:'all 0.5s',
+  zIndex: '1',
 }
 
 export const footerStyle = {
@@ -15,7 +30,8 @@ export const footerStyle = {
 }
 
 export const jumbotronStyle = {
-  marginTop: '0'
+  marginTop: '0',
+  opacity: '0.8'
 }
 
 export const imageStyle = {

@@ -1,10 +1,11 @@
 import React from 'react'
+import { jumbotronStyle } from '../style/style'
 import { Jumbotron, Image, ListGroup } from 'react-bootstrap'
 
 const Profile = ({ currentUser }) => {
 
   return (
-    <Jumbotron>
+    <Jumbotron style={jumbotronStyle}>
       <h1>Welcome Back {currentUser.displayName}</h1>
       <Image className='my-2' src={currentUser.photoURL} rounded />
       <ListGroup className='my-2'>
