@@ -7,7 +7,7 @@ import { Navbar, Nav, Button, Image, Dropdown, DropdownButton } from 'react-boot
 const NavbarConent = ({ currentUser, setPage }) => {
 
   return (
-    <Navbar style={mainStyle} collapseOnSelect expand="lg">
+    <Navbar bg='light' style={mainStyle} collapseOnSelect expand="lg">
       <Navbar.Brand className='navColor' href="/">Navbar</Navbar.Brand>
       {
         currentUser &&
