@@ -26,11 +26,11 @@ const SignIn = ({ addOrEdit }) => {
   }
 
   return (
-    <Container>
-      <Row>
+    <Container className='my-5 py-5'>
+      <Row className='my-1'>
         <Col xs={12} sm={12} md={10} lg={8} xl={6}>
           <Jumbotron style={jumbotronStyle}>
-            <h1>Sign in with your eamil</h1>
+            <h1>Sign in with your email</h1>
             <Form.Group controlId='formEmail'>
               <Form.Label>Email</Form.Label>
               <input
