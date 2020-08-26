@@ -23,10 +23,18 @@ var firebaseConfig = {
   export const projectFirestore = firebase.firestore()
   export const timestamp = firebase.firestore.FieldValue.serverTimestamp
 
-  export const porjectAuthGoogle = new firebase.auth.GoogleAuthProvider();
-    porjectAuthGoogle.setCustomParameters({
-      promt: "select_account",
-    })
+  export const porjectAuthGoogle = new firebase.auth.GoogleAuthProvider()
+  porjectAuthGoogle.setCustomParameters({
+    promt: "select_account",
+  })
+
+  // 用google登入
   export const signInWithGoogle = () => porjectAuth.signInWithPopup(porjectAuthGoogle)
-  export const signInWithEmail = () => porjectAuth.signInWithEmailAndPassword()
+  // 使用email跟password註冊
+  export const signUpWithEmail = (email, password) => porjectAuth.createUserWithEmailAndPassword(email, password)
+  // 使用email跟password登入
+  export const signInWithEmail = (email, password) =>    porjectAuth.signInWithEmailAndPassword(email, password)
   export const signOut = () => porjectAuth.signOut()
+  // 重設email跟pasword
+  export const resetEmail = (email) => porjectAuth.sendPasswordResetEmail(email);
+  export const resetPassword = (password) =>    porjectAuth.currentUser.updatePassword(password)
