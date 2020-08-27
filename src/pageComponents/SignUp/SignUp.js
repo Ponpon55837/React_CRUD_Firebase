@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import { porjectAuth, signUpWithEmail } from '../../firebase/Config'
 import { Form, Button } from 'react-bootstrap'
 
-const SignUp = ({ addOrEdit }) => {
+const SignUp = () => {
   const initialFieldValues = {
     fullName: '',
     mobile: '',
     email: '',
-    password: '',
-    address: ''
+    passwordOne: '',
+    passwordTwo: '',
+    address: '',
+    error: null
   }
 
   const [values, setValues] = useState(initialFieldValues)
@@ -23,7 +26,7 @@ const SignUp = ({ addOrEdit }) => {
 
   const handlerFormSubmit = (e) => {
     e.preventDefault()
-    addOrEdit(values)
+
   }
 
   return (
@@ -58,14 +61,25 @@ const SignUp = ({ addOrEdit }) => {
           onChange={handlerInputChange} />
       </Form.Group>
 
-      <Form.Group controlId='formPassword'>
+      <Form.Group controlId='formPasswordOne'>
         <Form.Label>Password</Form.Label>
         <input
           type='password'
           className='form-control'
           placeholder='Input password'
           name='password'
-          value={values.password}
+          value={values.passwordOne}
+          onChange={handlerInputChange} />
+      </Form.Group>
+
+      <Form.Group controlId='formPasswordTwo'>
+        <Form.Label>Password</Form.Label>
+        <input
+          type='password'
+          className='form-control'
+          placeholder='Input password again'
+          name='password'
+          value={values.passwordTwo}
           onChange={handlerInputChange} />
       </Form.Group>
 
@@ -78,9 +92,10 @@ const SignUp = ({ addOrEdit }) => {
           value={values.address}
           onChange={handlerInputChange} />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button disabled={!values} variant="primary" type="submit">
         Submit
       </Button>
+      {values.error && <p>{values.error.message}</p>}
     </Form>
   )
 }
