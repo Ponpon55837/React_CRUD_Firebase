@@ -4,7 +4,7 @@ import { Table, Button } from 'react-bootstrap'
 const ContactsTable = ({ contactsObj, setCurrentId, deleteId }) => {
 
   return (
-    <Table striped bordered hover>
+    <Table bordered hover responsive>
       <thead>
         <tr>
           <th>Full Name</th>
