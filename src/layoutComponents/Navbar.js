@@ -1,8 +1,7 @@
 import React from 'react'
 import { imageStyle, mainStyle } from '../style/style.js'
-import { signInWithGoogle, signInWithEmail, signOut } from '../firebase/Config'
-import { Link } from "react-router-dom"
-import { Navbar, Nav, NavDropdown, Button, Image } from 'react-bootstrap'
+import { signInWithGoogle, signOut } from '../firebase/Config'
+import { Navbar, Nav, NavDropdown, Image } from 'react-bootstrap'
 
 const NavbarConent = ({ currentUser, setPage }) => {
 

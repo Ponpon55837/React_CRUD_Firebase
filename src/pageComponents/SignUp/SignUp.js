@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { porjectAuth, signUpWithEmail } from '../../firebase/Config'
+import { signUpWithEmail } from '../../firebase/Config'
 import { Form, Button } from 'react-bootstrap'
 
 const SignUp = () => {
@@ -7,26 +7,38 @@ const SignUp = () => {
     fullName: '',
     mobile: '',
     email: '',
-    passwordOne: '',
-    passwordTwo: '',
+    password: '',
     address: '',
-    error: null
+    error: ''
   }
 
-  const [values, setValues] = useState(initialFieldValues)
+  const [user, setUser] = useState(initialFieldValues)
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
-    setValues({
+    setUser({
       // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
-      ...values,
-      [name]: value
+      ...user,
+      [name]: value,
+      error: '',
     })
   }
 
-  const handlerFormSubmit = (e) => {
+  const handlerFormSubmit = async (e) => {
     e.preventDefault()
-
+    await signUpWithEmail(user.email, user.password).then(result => {
+      // Update the nickname
+      result.user.updateProfile({
+        displayName: user.fullName,
+      })
+    }).catch(error => {
+      // Update the error
+      console.log(error);
+      setUser({
+        ...user,
+        error: error.message,
+      })
+    })
   }
 
   return (
@@ -37,7 +49,7 @@ const SignUp = () => {
           className='form-control'
           placeholder='Input Full Name'
           name='fullName'
-          value={values.fullName}
+          value={user.fullName}
           onChange={handlerInputChange} />
       </Form.Group>
 
@@ -47,7 +59,7 @@ const SignUp = () => {
           className='form-control'
           placeholder='Input Mobile'
           name='mobile'
-          value={values.mobile}
+          value={user.mobile}
           onChange={handlerInputChange} />
       </Form.Group>
 
@@ -57,7 +69,7 @@ const SignUp = () => {
           className='form-control'
           placeholder='Input E-mail'
           name='email'
-          value={values.email}
+          value={user.email}
           onChange={handlerInputChange} />
       </Form.Group>
 
@@ -68,18 +80,7 @@ const SignUp = () => {
           className='form-control'
           placeholder='Input password'
           name='password'
-          value={values.passwordOne}
-          onChange={handlerInputChange} />
-      </Form.Group>
-
-      <Form.Group controlId='formPasswordTwo'>
-        <Form.Label>Password</Form.Label>
-        <input
-          type='password'
-          className='form-control'
-          placeholder='Input password again'
-          name='password'
-          value={values.passwordTwo}
+          value={user.password}
           onChange={handlerInputChange} />
       </Form.Group>
 
@@ -89,13 +90,13 @@ const SignUp = () => {
           className='form-control'
           placeholder='Input Address'
           name='address'
-          value={values.address}
+          value={user.address}
           onChange={handlerInputChange} />
       </Form.Group>
-      <Button disabled={!values} variant="primary" type="submit">
+      <Button variant="primary" type="submit">
         Submit
       </Button>
-      {values.error && <p>{values.error.message}</p>}
+      {user.error && <p>{user.error.message}</p>}
     </Form>
   )
 }

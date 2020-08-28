@@ -23,15 +23,37 @@ var firebaseConfig = {
   export const projectFirestore = firebase.firestore()
   export const timestamp = firebase.firestore.FieldValue.serverTimestamp
 
+  // 使用google註冊
   export const porjectAuthGoogle = new firebase.auth.GoogleAuthProvider()
   porjectAuthGoogle.setCustomParameters({
     promt: "select_account",
   })
+  // 使用email跟password註冊
+  export const signUpWithEmail = (email, password) => porjectAuth.createUserWithEmailAndPassword(email, password)
+
+  export const createUserProfileDocument = async (userAuth:any) => {
+    if(!userAuth) return
+
+    const userReference =  projectFirestore.doc(`users/${userAuth.uid}`)
+    const snapShot =  await userReference.get()
+    if(!snapShot.exists) {
+      const {displayName, email} = userAuth
+      const createdAt = new Date()
+      try {
+        await userReference.set({
+          displayName,
+          email,
+          createdAt
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+   return userReference
+  }
 
   // 用google登入
   export const signInWithGoogle = () => porjectAuth.signInWithPopup(porjectAuthGoogle)
-  // 使用email跟password註冊
-  export const signUpWithEmail = (email, password) => porjectAuth.createUserWithEmailAndPassword(email, password)
   // 使用email跟password登入
   export const signInWithEmail = (email, password) =>    porjectAuth.signInWithEmailAndPassword(email, password)
   export const signOut = () => porjectAuth.signOut()
