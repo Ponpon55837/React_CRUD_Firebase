@@ -13,13 +13,12 @@ import { Container } from 'react-bootstrap'
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
   const [page, setPage] = useState('NotLogIn')
-  console.log(page)
 
   useEffect(() => {
     porjectAuth.onAuthStateChanged(userAuth => {
       if(userAuth) {
         setCurrentUser(userAuth)
-        console.log(userAuth)
+        console.log(userAuth.providerData)
       }
       else {
         setCurrentUser('')
