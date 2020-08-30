@@ -3,7 +3,7 @@ import { jumbotronStyle } from '../../style/style'
 import { signInWithEmail, signOut } from '../../firebase/Config'
 import { Container, Row, Col, Jumbotron, Form, Button } from 'react-bootstrap'
 
-const SignIn = () => {
+const SignIn = (props) => {
 
   const initialFieldValues = {
     email: '',
@@ -25,12 +25,15 @@ const SignIn = () => {
   const handlerFormSubmit = (e) => {
     e.preventDefault()
     signInWithEmail(user.email, user.password).then(result => {
-      if (!result.user.emailVerified) {
+      if (!result.user.email) {
         setUser({
           ...user,
           error: 'Please verify your email before to continue',
         })
         signOut()
+      }
+      else if (result.user) {
+        props.history.push('/')
       }
     })
     .catch(error => {
