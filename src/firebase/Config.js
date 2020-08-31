@@ -4,27 +4,19 @@ import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/auth'
 
-// apiKey: process.env.REACT_APP_API_KEY,
-// authDomain: process.env.REACT_APP_AUTH_DOMAIN ,
-// databaseURL: process.env.REACT_APP_DATABASE_URL,
-// projectId: process.env.REACT_APP_PROJECT_ID,
-// storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-// messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-// appId: process.env.REACT_APP_APP_ID,
-// measurementId: process.env.REACT_APP_MEASUREMENT_ID
-
-var firebaseConfig = {
-    apiKey: "AIzaSyAYxBKTuy9fUOz3lGMExaUfVYEoPREDANs",
-    authDomain: "react-crud-fcfb1.firebaseapp.com",
-    databaseURL: "https://react-crud-fcfb1.firebaseio.com",
-    projectId: "react-crud-fcfb1",
-    storageBucket: "react-crud-fcfb1.appspot.com",
-    messagingSenderId: "206599953779",
-    appId: "1:206599953779:web:8eeba1c73e061611bb7906",
-    measurementId: "G-XJKY6R01YT"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+// 特別注意，在react.js中雖然可以直接使用env內的環境變數，但是每個環境變數都要前綴REACT_APP才能用
+let firebaseConfig = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  }
+  // 初始化 Firebase
+  firebase.initializeApp(firebaseConfig)
 
   export const projectDB = firebase.database().ref()
   export const porjectAuth = firebase.auth()
