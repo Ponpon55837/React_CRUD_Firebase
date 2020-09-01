@@ -33,7 +33,7 @@ const NavbarConent = ({ currentUser, setPage }) => {
                 Google Login
               </NavDropdown.Item>
               <NavDropdown.Item onClick={() => setPage('SignIn')}>
-                SignIn
+                Email Login
               </NavDropdown.Item>
             </NavDropdown>
           }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { signUpWithEmail } from '../../firebase/Config'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Alert } from 'react-bootstrap'
 
 const SignUp = () => {
   const initialFieldValues = {
@@ -96,7 +96,12 @@ const SignUp = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-      {user.error && <p>{user.error.message}</p>}
+      {
+        user.error !== '' &&
+        <Alert className='my-2' variant='danger'>
+          {user.error}
+        </Alert>
+      }
     </Form>
   )
 }

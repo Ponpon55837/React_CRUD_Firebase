@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { jumbotronStyle } from '../../style/style'
 import { signInWithEmail, signOut } from '../../firebase/Config'
-import { Container, Row, Col, Jumbotron, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Jumbotron, Form, Button, Alert } from 'react-bootstrap'
 
 const SignIn = (props) => {
 
@@ -23,7 +23,6 @@ const SignIn = (props) => {
   }
 
   const handlerFormSubmit = (e) => {
-    e.preventDefault()
     signInWithEmail(user.email, user.password).then(result => {
       if (!result.user.email) {
         setUser({
@@ -43,6 +42,7 @@ const SignIn = (props) => {
         error: error.message,
       })
     })
+    e.preventDefault()
   }
 
   return (
@@ -75,6 +75,12 @@ const SignIn = (props) => {
               <Button variant="primary" type="submit">
                 Submit
               </Button>
+              {
+                user.error !== '' &&
+                <Alert className='my-2' variant='danger'>
+                  {user.error}
+                </Alert>
+              }
             </Form>
           </Jumbotron>
         </Col>
