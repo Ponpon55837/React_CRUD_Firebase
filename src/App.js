@@ -18,7 +18,6 @@ const App = () => {
     porjectAuth.onAuthStateChanged(userAuth => {
       if(userAuth) {
         setCurrentUser(userAuth)
-        console.log(userAuth.providerData)
       }
       else {
         setCurrentUser('')

@@ -5,7 +5,7 @@ import { projectDB } from '../../firebase/Config'
 import { jumbotronStyle } from '../../style/style.js'
 import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
 
-const Contacts = () => {
+const Contacts = ({ currentUser }) => {
   const [contactsObj, setContactsObj] = useState({})
   const [currentID, setCurrentId] = useState('')
   const [page, setPage] = useState('Table')

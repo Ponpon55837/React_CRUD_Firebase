@@ -26,10 +26,17 @@ const SignUp = () => {
 
   const handlerFormSubmit = async (e) => {
     e.preventDefault()
+    const myURL = { url: process.env.REACT_APP_WEB_URL }
     await signUpWithEmail(user.email, user.password).then(result => {
       // Update the nickname
       result.user.updateProfile({
         displayName: user.fullName,
+      })
+      result.user.sendEmailVerification(myURL).then(() => {
+        setUser({
+          ...user,
+          verifyEmail: `Welcome ${user.fullName}. To continue please verify your email.`,
+        })
       })
     }).catch(error => {
       // Update the error

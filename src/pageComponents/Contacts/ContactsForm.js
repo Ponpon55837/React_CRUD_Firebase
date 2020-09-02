@@ -86,18 +86,3 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
 }
 
 export default ContactsForm
-
-
-// {
-//   getContactsFormContent().map(content => (
-//     <Form.Group controlId={content.controlId} key={content.id}>
-//       <Form.Label>{content.Label}</Form.Label>
-//       <input
-//         className='form-control'
-//         placeholder={content.placeholder}
-//         name={content.name}
-//         value={values.name}
-//         onChange={handlerInputChange} />
-//     </Form.Group>
-//   ))
-// }
