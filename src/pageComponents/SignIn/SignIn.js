@@ -12,6 +12,7 @@ const SignIn = (props) => {
   }
 
   const [user, setUser] = useState(initialFieldValues)
+  const [show, setShow] = useState(true)
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
@@ -76,8 +77,12 @@ const SignIn = (props) => {
                 Submit
               </Button>
               {
-                user.error !== '' &&
-                <Alert className='my-2' variant='danger'>
+                user.error !== '' && show &&
+                <Alert
+                  className='my-2'
+                  variant='danger'
+                  onClose={() => setShow(false)}
+                  dismissible>
                   {user.error}
                 </Alert>
               }
