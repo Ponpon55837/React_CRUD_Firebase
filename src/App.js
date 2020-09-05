@@ -26,14 +26,21 @@ const App = () => {
     })
   },[])
 
+  if(!currentUser) {
+    return (
+      <div style={bgStyle}>
+        <Navbar currentUser={currentUser} setPage={setPage} />
+        <Container className='mt-3'>
+          { page === 'NotLogIn' ? <NotLogIn /> : <SignIn /> }
+        </Container>
+        <Footer />
+      </div>
+    )
+  }
+
   return (
     <div style={bgStyle}>
       <Navbar currentUser={currentUser} setPage={setPage} />
-      {
-        !currentUser ?
-        <Container className='mt-3'>
-          { page === 'NotLogIn' ? <NotLogIn /> : <SignIn /> }
-        </Container> :
         <BrowserRouter>
           <Container className='mt-3'>
             <Switch>
@@ -46,7 +53,6 @@ const App = () => {
             </Switch>
           </Container>
         </BrowserRouter>
-      }
       <Footer />
     </div>
   )
