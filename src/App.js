@@ -11,13 +11,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container } from 'react-bootstrap'
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState(null)
   console.log(currentUser)
   const [page, setPage] = useState('NotLogIn')
 
   useEffect(() => {
     porjectAuth.onAuthStateChanged(userAuth => {
-      userAuth ? setCurrentUser(userAuth) : setCurrentUser('')
+      userAuth ? setCurrentUser(userAuth) : setCurrentUser(null)
     })
   },[])
 
