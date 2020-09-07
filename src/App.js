@@ -16,12 +16,9 @@ const App = () => {
   const [page, setPage] = useState('NotLogIn')
 
   useEffect(() => {
-    const unlisten = porjectAuth.onAuthStateChanged(userAuth => {
-      userAuth ? setCurrentUser(userAuth) : setCurrentUser(null)
+    porjectAuth.onAuthStateChanged(userAuth => {
+      userAuth ? setCurrentUser(userAuth) : setCurrentUser('')
     })
-    return () => {
-      unlisten()
-    }
   },[])
 
   if(!currentUser) {

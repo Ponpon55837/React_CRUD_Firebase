@@ -1,6 +1,6 @@
 import React from 'react'
 import { jumbotronStyle } from '../style/style'
-import { Jumbotron, Container, Row, Col, Image, ListGroup } from 'react-bootstrap'
+import { Jumbotron, Container, Row, Col, Image, ListGroup} from 'react-bootstrap'
 
 const Profile = ({ currentUser }) => {
 
