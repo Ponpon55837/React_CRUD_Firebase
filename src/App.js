@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
-import Profile from './pageComponents/ProfilePage'
+import Profile from './pageComponents/Profile/ProfilePage'
 import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { porjectAuth } from "./firebase/Config"
