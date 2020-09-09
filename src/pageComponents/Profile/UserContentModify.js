@@ -4,12 +4,13 @@ import { Form, Button, Alert } from 'react-bootstrap'
 
 const UserContetModify = ({ currentUser }) => {
   const initialFieldValues = {
-    fullName: ''
+    fullName: '',
+    error: ''
   }
 
   const [user, setUser] = useState(initialFieldValues)
   const [subSuccess, setSubSuccess] = useState(false)
-  const [errorShow, setErrorShow] = useState(true)
+  const [errorShow, setErrorShow] = useState('')
 
   useEffect(() => {
     if(currentUser === '') {
@@ -18,26 +19,32 @@ const UserContetModify = ({ currentUser }) => {
       })
     }
     else {
-      console.log(currentUser.displayName)
+      // console.log(currentUser.displayName)
     }
   },[])
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
-    setUser({
-      // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
-      ...user,
-      [name]: value
-    })
+    if(value.match("^[a-zA-Z]*$")!= null) {
+      setUser({
+        // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
+        ...user,
+        [name]: value
+      })
+    } else {
+      setErrorShow('Can not input number')
+      setSubSuccess(false)
+    }
   }
 
   const handlerFormSubmit = async (e) => {
-    if (currentUser.email != null) {
+    if (currentUser.email != null && user.fullName != '' && user.fullName.length > 5) {
         currentUser.updateProfile({
           displayName: user.fullName
         }).then(() => {
           setUser(initialFieldValues)
           setSubSuccess(true)
+          setErrorShow(false)
         }).catch((error) => {
           setUser({
             ...user,
@@ -45,7 +52,8 @@ const UserContetModify = ({ currentUser }) => {
           })
         })
     } else {
-      console.log(user)
+      setSubSuccess(false)
+      setErrorShow('Can not input null or length < 5')
     }
     e.preventDefault()
   }
@@ -72,11 +80,11 @@ const UserContetModify = ({ currentUser }) => {
           variant='success'
           onClose={() => setSubSuccess(false)}
           dismissible>
-          Update Success
+          Update User Name: {currentUser.displayName} Success
         </Alert>
       }
       {
-        user.error && errorShow &&
+        user.error &&
         <Alert
           className='my-2'
           variant='danger'
@@ -85,20 +93,18 @@ const UserContetModify = ({ currentUser }) => {
           {user.error}
         </Alert>
       }
+      {
+        errorShow &&
+        <Alert
+          className='my-2'
+          variant='danger'
+          onClose={() => setErrorShow(false)}
+          dismissible>
+          {errorShow}
+        </Alert>
+      }
     </Form>
   )
 }
 
 export default UserContetModify
-
-
-//
-// <Form.Group controlId='formEmail'>
-//   <Form.Label>Email</Form.Label>
-//   <input
-//     className='form-control'
-//     placeholder='Input E-mail'
-//     name='email'
-//     value={user.email}
-//     onChange={handlerInputChange} />
-// </Form.Group>
