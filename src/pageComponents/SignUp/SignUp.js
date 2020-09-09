@@ -13,15 +13,21 @@ const SignUp = () => {
   }
 
   const [user, setUser] = useState(initialFieldValues)
+  const [errorShow, setErrorShow] = useState('')
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
-    setUser({
-      // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
-      ...user,
-      [name]: value,
-      error: '',
-    })
+    if(value.match("^[a-zA-Z0-9@.]*$")!= null) {
+      setUser({
+        // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
+        ...user,
+        [name]: value,
+        error: '',
+      })
+      setErrorShow(false)
+    } else {
+      setErrorShow('You need input 0-9 a-z A-Z @ .')
+    }
   }
 
   const handlerFormSubmit = async (e) => {
@@ -29,9 +35,11 @@ const SignUp = () => {
     const myURL = { url: process.env.REACT_APP_WEB_URL }
     await signUpWithEmail(user.email, user.password).then(result => {
       // Update the nickname
-      result.user.updateProfile({
-        displayName: user.fullName,
-      })
+      if(result.user.displayName !== null) {
+        result.user.updateProfile({
+          displayName: user.fullName,
+        })
+      }
       result.user.sendEmailVerification(myURL).then(() => {
         setUser({
           ...user,
@@ -107,6 +115,16 @@ const SignUp = () => {
         user.error !== '' &&
         <Alert className='my-2' variant='danger'>
           {user.error}
+        </Alert>
+      }
+      {
+        errorShow !== '' && errorShow &&
+        <Alert
+          className='my-2'
+          dismissible
+          variant='danger'
+          onClose={() => setErrorShow(false)} >
+          {errorShow}
         </Alert>
       }
     </Form>
