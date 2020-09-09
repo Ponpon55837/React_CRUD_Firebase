@@ -25,14 +25,14 @@ const UserContetModify = ({ currentUser }) => {
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
-    if(value.match("^[a-zA-Z0-9]*$")!= null) {
+    if(value != null) {
       setUser({
         // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
         ...user,
         [name]: value
       })
     } else {
-      setErrorShow('Can not input number')
+      setErrorShow('Can not input null')
       setSubSuccess(false)
     }
   }
