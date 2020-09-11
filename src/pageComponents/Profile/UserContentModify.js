@@ -8,7 +8,7 @@ const UserContetModify = ({ currentUser }) => {
     error: ''
   }
 
-  const [user, setUser] = useState(initialFieldValues)
+  const [user, setUser] = useState({fullName:currentUser.displayName})
   const [subSuccess, setSubSuccess] = useState(false)
   const [errorShow, setErrorShow] = useState('')
 
@@ -32,7 +32,7 @@ const UserContetModify = ({ currentUser }) => {
         [name]: value
       })
     } else {
-      setErrorShow('Can not input null')
+      setErrorShow('Can not input Null')
       setSubSuccess(false)
     }
   }
