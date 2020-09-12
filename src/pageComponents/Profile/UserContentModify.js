@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 // import { resetEmail, signOut } from '../../firebase/Config'
-import { Form, Button, Alert } from 'react-bootstrap'
+import { Col, Form, Button, Alert } from 'react-bootstrap'
 
-const UserContetModify = ({ currentUser }) => {
+const UserContetModify = ({ currentUser, setPage }) => {
   const initialFieldValues = {
     fullName: '',
     error: ''
@@ -45,6 +45,7 @@ const UserContetModify = ({ currentUser }) => {
           setUser(initialFieldValues)
           setSubSuccess(true)
           setErrorShow(false)
+          setPage('display')
         }).catch((error) => {
           setUser({
             ...user,
@@ -59,51 +60,53 @@ const UserContetModify = ({ currentUser }) => {
   }
 
   return (
-    <Form className='my-2' onSubmit={handlerFormSubmit}>
-      <Form.Group controlId='formFullName'>
-        <Form.Label>Full Name</Form.Label>
-        <input
-          className='form-control'
-          placeholder='Input Full Name'
-          name='fullName'
-          value={user.fullName}
-          onChange={handlerInputChange} />
-      </Form.Group>
+    <Col xs={12} sm={12} md={12} lg={6} xl={6}>
+      <Form className='my-2' onSubmit={handlerFormSubmit}>
+        <Form.Group controlId='formFullName'>
+          <Form.Label>Full Name</Form.Label>
+          <input
+            className='form-control'
+            placeholder='Input Full Name'
+            name='fullName'
+            value={user.fullName}
+            onChange={handlerInputChange} />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Update
-      </Button>
-      {
-        subSuccess &&
-        <Alert
-          className='my-2'
-          variant='success'
-          onClose={() => setSubSuccess(false)}
-          dismissible>
-          Update User Name: {currentUser.displayName} Success
-        </Alert>
-      }
-      {
-        user.error &&
-        <Alert
-          className='my-2'
-          variant='danger'
-          onClose={() => setErrorShow(false)}
-          dismissible>
-          {user.error}
-        </Alert>
-      }
-      {
-        errorShow &&
-        <Alert
-          className='my-2'
-          variant='danger'
-          onClose={() => setErrorShow(false)}
-          dismissible>
-          {errorShow}
-        </Alert>
-      }
-    </Form>
+        <Button variant="primary" type="submit">
+          Update
+        </Button>
+        {
+          subSuccess &&
+          <Alert
+            className='my-2'
+            variant='success'
+            onClose={() => setSubSuccess(false)}
+            dismissible>
+            Update User Name: {currentUser.displayName} Success
+          </Alert>
+        }
+        {
+          user.error &&
+          <Alert
+            className='my-2'
+            variant='danger'
+            onClose={() => setErrorShow(false)}
+            dismissible>
+            {user.error}
+          </Alert>
+        }
+        {
+          errorShow &&
+          <Alert
+            className='my-2'
+            variant='danger'
+            onClose={() => setErrorShow(false)}
+            dismissible>
+            {errorShow}
+          </Alert>
+        }
+      </Form>
+    </Col>
   )
 }
 
