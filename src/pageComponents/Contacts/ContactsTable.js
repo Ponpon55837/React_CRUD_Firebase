@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 
-const ContactsTable = ({ contactsObj, setCurrentId, deleteId }) => {
+const ContactsTable = ({ contactsObj, setCurrentId, deleteId, setPage }) => {
 
   return (
     <Table bordered hover responsive>
@@ -21,7 +21,7 @@ const ContactsTable = ({ contactsObj, setCurrentId, deleteId }) => {
               <td>{contactsObj[id].mobile}</td>
               <td>{contactsObj[id].email}</td>
               <td>
-                <Button className='btn-primary m-1' onClick={() => setCurrentId(id)}>Edit</Button>
+                <Button className='btn-primary m-1' onClick={() => (setCurrentId(id), setPage('Form'))}>Edit</Button>
                 <Button className='btn-danger m-1' onClick={() => deleteId(id)}>Delete</Button>
               </td>
             </tr>

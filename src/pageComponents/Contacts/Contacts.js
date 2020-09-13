@@ -80,8 +80,8 @@ const Contacts = ({ currentUser }) => {
           <Row>
             <Col>
               { page === 'Table' ?
-                <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} /> :
-                <ContactsForm {...({ addOrEdit, currentID, contactsObj })} />
+                <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} setPage={setPage} /> :
+                <ContactsForm {...({ addOrEdit, currentID, contactsObj })} setPage={setPage} />
               }
             </Col>
           </Row>

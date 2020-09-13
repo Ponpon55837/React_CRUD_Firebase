@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
+const ContactsForm = ({ addOrEdit, currentID, contactsObj, setPage }) => {
   const initialFieldValues = {
     fullName: '',
     mobile: '',
@@ -35,6 +35,7 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj }) => {
   const handlerFormSubmit = (e) => {
     e.preventDefault()
     addOrEdit(values)
+    setPage('Table')
   }
 
   return (
