@@ -35,11 +35,10 @@ const SignUp = () => {
     const myURL = { url: process.env.REACT_APP_WEB_URL }
     await signUpWithEmail(user.email, user.password).then(result => {
       // Update the nickname
-      if(result.user.displayName !== null) {
-        result.user.updateProfile({
-          displayName: user.fullName,
-        })
-      }
+      result.user.updateProfile({
+        displayName: user.fullName,
+      })
+
       result.user.sendEmailVerification(myURL).then(() => {
         setUser({
           ...user,

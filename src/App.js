@@ -12,7 +12,7 @@ import { Container } from 'react-bootstrap'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
-  console.log(currentUser)
+  // console.log(currentUser)
   const [page, setPage] = useState('NotLogIn')
 
   useEffect(() => {

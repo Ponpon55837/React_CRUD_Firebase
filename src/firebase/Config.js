@@ -33,24 +33,25 @@ let firebaseConfig = {
   export const signUpWithEmail = (email, password) => porjectAuth.createUserWithEmailAndPassword(email, password)
 
   export const createUserProfileDocument = async (userAuth:any) => {
-    if(!userAuth) return
-
-    const userReference =  projectFirestore.doc(`users/${userAuth.uid}`)
-    const snapShot =  await userReference.get()
-    if(!snapShot.exists) {
-      const {displayName, email} = userAuth
-      const createdAt = new Date()
-      try {
-        await userReference.set({
-          displayName,
-          email,
-          createdAt
-        })
-      } catch (error) {
-        console.log(error)
+    if(userAuth) {
+      const userReference =  projectFirestore.doc(`users/${userAuth.uid}`)
+      const snapShot =  await userReference.get()
+      if(!snapShot.exists) {
+        const {displayName, email, photoURL} = userAuth
+        const createdAt = new Date()
+        try {
+          await userReference.set({
+            displayName,
+            email,
+            createdAt,
+            photoURL
+          })
+        } catch (error) {
+          console.log(error)
+        }
       }
+     return userReference
     }
-   return userReference
   }
 
   // 用google登入

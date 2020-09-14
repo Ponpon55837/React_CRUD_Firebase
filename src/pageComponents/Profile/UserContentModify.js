@@ -8,7 +8,7 @@ const UserContetModify = ({ currentUser, setPage }) => {
     error: ''
   }
 
-  const [user, setUser] = useState({fullName:currentUser.displayName})
+  const [user, setUser] = useState({ fullName: currentUser.displayName })
   const [subSuccess, setSubSuccess] = useState(false)
   const [errorShow, setErrorShow] = useState('')
 
