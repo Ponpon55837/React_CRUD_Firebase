@@ -25,7 +25,7 @@ const UserContetModify = ({ currentUser, setPage }) => {
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target
-    if(value != null) {
+    if(value.match("^[\u4e00-\u9fa5a-zA-Z0-9]*$")) {
       setUser({
         // 這邊先串接useState中的valuses，然後使用陣列去寫入每個input裡面的name的值
         ...user,
@@ -38,7 +38,7 @@ const UserContetModify = ({ currentUser, setPage }) => {
   }
 
   const handlerFormSubmit = async (e) => {
-    if (currentUser.email != null && user.fullName != '' && user.fullName.length > 5) {
+    if (currentUser.email != null && user.fullName != '' && user.fullName.length >= 2) {
         currentUser.updateProfile({
           displayName: user.fullName
         }).then(() => {
@@ -54,7 +54,7 @@ const UserContetModify = ({ currentUser, setPage }) => {
         })
     } else {
       setSubSuccess(false)
-      setErrorShow('Can not input null or length < 5')
+      setErrorShow('Can not input null or length < 2')
     }
     e.preventDefault()
   }
