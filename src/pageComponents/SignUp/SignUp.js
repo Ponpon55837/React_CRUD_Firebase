@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { signUpWithEmail } from '../../firebase/Config'
+import { signUpWithEmail, createUserProfileDocument } from '../../firebase/Config'
 import { Form, Button, Alert } from 'react-bootstrap'
 
 const SignUp = () => {
@@ -38,6 +38,8 @@ const SignUp = () => {
       result.user.updateProfile({
         displayName: user.fullName,
       })
+
+      createUserProfileDocument(result.user)
 
       result.user.sendEmailVerification(myURL).then(() => {
         setUser({
