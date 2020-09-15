@@ -5,7 +5,7 @@ import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/Profile/ProfilePage'
 import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
-import { porjectAuth } from "./firebase/Config"
+import { projectAuth } from "./firebase/Config"
 import { bgStyle } from './style/style'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container } from 'react-bootstrap'
@@ -16,7 +16,7 @@ const App = () => {
   const [page, setPage] = useState('NotLogIn')
 
   useEffect(() => {
-    porjectAuth.onAuthStateChanged(userAuth => {
+    projectAuth.onAuthStateChanged(userAuth => {
       userAuth ? setCurrentUser(userAuth) : setCurrentUser(null)
     })
   },[])
