@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import { resetEmail, signOut } from '../../firebase/Config'
 import { Col, Form, Button, Alert } from 'react-bootstrap'
 
-const UserContetModify = ({ currentUser, setPage }) => {
+const UserContetModify = ({ currentUser, snapData, setPage }) => {
   const initialFieldValues = {
     fullName: '',
     error: ''
@@ -38,7 +38,9 @@ const UserContetModify = ({ currentUser, setPage }) => {
   }
 
   const handlerFormSubmit = async (e) => {
-    if (currentUser.email !== null && user.fullName !== '' && user.fullName.length >= 2) {
+    if (currentUser.email !== null
+        && user.fullName !== ''
+        && user.fullName.length >= 2) {
         currentUser.updateProfile({
           displayName: user.fullName
         }).then(() => {
