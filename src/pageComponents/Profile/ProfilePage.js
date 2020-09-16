@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { jumbotronStyle } from '../../style/style'
 import UserContentDisplay from './UserContentDisplay'
 import UserContentModify from './UserContentModify'

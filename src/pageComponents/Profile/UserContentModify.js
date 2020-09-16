@@ -38,7 +38,7 @@ const UserContetModify = ({ currentUser, setPage }) => {
   }
 
   const handlerFormSubmit = async (e) => {
-    if (currentUser.email != null && user.fullName != '' && user.fullName.length >= 2) {
+    if (currentUser.email !== null && user.fullName !== '' && user.fullName.length >= 2) {
         currentUser.updateProfile({
           displayName: user.fullName
         }).then(() => {
