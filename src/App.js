@@ -3,7 +3,7 @@ import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/Profile/ProfilePage'
-import PhotoProfile from './pageComponents/Photo/PhotoGrid'
+import PhotoProfile from './pageComponents/Photo/PhotoProfile'
 import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { projectAuth } from "./firebase/Config"

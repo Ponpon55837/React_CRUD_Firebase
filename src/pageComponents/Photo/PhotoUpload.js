@@ -29,12 +29,7 @@ const PhotoUpload = () => {
 
   return (
     <form>
-      <motion.div
-        animate={{
-          scale: [1, 2, 3, 2, 1],
-          rotate: [90, 180, 270, 270, 0],
-          borderRadius: ["20%", "50%", "100%", "100%", "20%"],
-        }}>
+      <motion.div>
         <label>
           <input type='file' onChange={changeHandler} />
           <span>Click here to add picture.</span>
