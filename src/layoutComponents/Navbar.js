@@ -26,6 +26,7 @@ const NavbarConent = ({ currentUser, setPage }) => {
             <>
               <Nav.Link href="/">Profile</Nav.Link>
               <Nav.Link href="/contacts">Contacts</Nav.Link>
+              <Nav.Link href="/photo">Photo</Nav.Link>
               <Nav.Link onClick={signOut}>Log Out</Nav.Link>
             </> :
             <NavDropdown title="Log In" >

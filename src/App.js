@@ -3,6 +3,7 @@ import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/Profile/ProfilePage'
+import PhotoProfile from './pageComponents/Photo/PhotoGrid'
 import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { projectAuth } from "./firebase/Config"
@@ -41,6 +42,9 @@ const App = () => {
             <Switch>
               <Route path='/contacts'>
                 <Contacts />
+              </Route>
+              <Route path='/photo'>
+                <PhotoProfile />
               </Route>
               <Route path='/'>
                 <Profile currentUser={currentUser} />
