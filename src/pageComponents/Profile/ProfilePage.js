@@ -18,6 +18,7 @@ const Profile = ({ currentUser }) => {
         setSnapData(snap.data())
       } else {
         console.log("No such document!")
+        setSnapData(currentUser)
       }
     }).catch(error => {
       console.log("Error getting document:", error)
