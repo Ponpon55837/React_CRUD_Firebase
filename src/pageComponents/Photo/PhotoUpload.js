@@ -30,9 +30,9 @@ const PhotoUpload = () => {
   return (
     <form>
       <motion.div>
-        <label>
+        <label className='labelPhoto'>
           <input type='file' onChange={changeHandler} />
-          <span>Click here to add picture.</span>
+          <span>+</span>
         </label>
       </motion.div>
       <div className='output'>

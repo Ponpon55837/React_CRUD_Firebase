@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PhotoGrid from './PhotoGrid'
 import PhotoUpload from './PhotoUpload'
 import Model from './Model'
+import '../../style/photo.css'
 
 
 const PhotoProfile = () => {
