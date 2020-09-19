@@ -32,10 +32,6 @@ const Profile = ({ currentUser }) => {
       <Button className='m-2' variant="outline-primary" onClick={() => setPage('modify')}>Modify</Button>
       <Container className='my-4'>
         <Row>
-          <Col>
-          </Col>
-        </Row>
-        <Row>
           <Col xs={12} sm={12} md={12} lg={6} xl={6}>
             <Image className='my-2' src={snapData.photoURL} rounded />
           </Col>
