@@ -9,10 +9,6 @@ const Model = ({ selectdImg, setSelectedImg }) => {
     }
   }
 
-  const handleButtonClick = (e) => {
-    setSelectedImg(null)
-  }
-
   return (
     <motion.div
       className='backdrop'

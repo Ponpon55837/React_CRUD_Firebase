@@ -114,19 +114,22 @@ label input{
   display: block;
   max-width: 80%;
   max-height: 80%;
-  margin: 80px auto;
+  margin: 8% auto 0 auto;
   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   border: 3px solid white;
   border-radius: 10px;
 	box-shadow: 0 0 5px rgba(0,0,0,1.00);
 }
 .backdrop button{
-  display: block;
+  /* display: block; */
   max-width: 80%;
   max-height: 80%;
-  margin: 90px 100px 0px 100px;
+  margin: 5% 20% 5px auto;
   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   border: 3px solid white;
   border-radius: 10px;
 	box-shadow: 0 0 5px rgba(0,0,0,1.00);
+  background-color: #BCD7F3;
+  opacity: 0.7;
+  /* z-index: 1; */
 }
