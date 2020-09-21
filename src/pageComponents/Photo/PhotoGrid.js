@@ -17,7 +17,7 @@ const PhotoGrid = ({ setSelectedImg }) => {
             onClick={() => setSelectedImg(doc.url)}>
             <motion.img
               src={doc.url}
-              alt='upload pic' />
+              alt={`upload pic by ${doc.url}`} />
           </motion.div>
         ))}
       </div>
