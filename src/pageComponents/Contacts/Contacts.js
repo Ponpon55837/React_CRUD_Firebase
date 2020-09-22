@@ -75,7 +75,7 @@ const Contacts = ({ currentUser }) => {
       <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12}>
         <h1>Contacts Register</h1>
         <Button className='m-2' variant="outline-primary" onClick={() => setPage('Table')}>Table</Button>
-        <Button className='m-2' variant="outline-primary" onClick={() => setPage('Form')}>Form</Button>
+        <Button className='m-2' variant="outline-primary" onClick={() => setPage('Form')}>Add New</Button>
         <Container className='my-2'>
           <Row>
             <Col>

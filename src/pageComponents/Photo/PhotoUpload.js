@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const PhotoUpload = () => {
   // 設定初始的file為空
   const [file, setFile] = useState(null)
-  const [error, setError] =useState(null)
+  const [error, setError] = useState(null)
 
   const types = ['image/png', 'image/jpeg', 'image/gif']
 
