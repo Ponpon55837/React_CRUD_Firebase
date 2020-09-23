@@ -26,7 +26,7 @@ const SignUp = () => {
       })
       setErrorShow(false)
     } else {
-      setErrorShow('You need input 0-9 a-z A-Z @ .')
+      setErrorShow('You need input 0-9 or a-z or A-Z or @ .')
     }
   }
 

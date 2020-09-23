@@ -45,8 +45,8 @@ let firebaseConfig = {
           await userReference.set({
             displayName,
             email,
-            createdAt,
-            photoURL
+            photoURL,
+            createdAt
           })
         } catch (error) {
           console.log(error)
