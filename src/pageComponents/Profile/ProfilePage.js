@@ -9,7 +9,7 @@ import { Jumbotron, Container, Row, Col, Button, Image } from 'react-bootstrap'
 const Profile = ({ currentUser }) => {
   const [page, setPage] = useState('display')
   const [snapData, setSnapData] = useState([])
-  console.log(snapData)
+  // console.log(snapData)
 
   useEffect(() => {
     const docRef = projectFirestore.collection('users').doc(`${currentUser.uid}`)
