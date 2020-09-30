@@ -4,6 +4,7 @@ import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/Profile/ProfilePage'
 import PhotoProfile from './pageComponents/Photo/PhotoProfile'
+import WeatherProfile from './pageComponents/Weather/WeatherProfile'
 import SignIn from './pageComponents/SignIn/SignIn'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { projectAuth } from "./firebase/Config"
@@ -45,6 +46,9 @@ const App = () => {
               </Route>
               <Route path='/photo'>
                 <PhotoProfile />
+              </Route>
+              <Route path='/weather'>
+                <WeatherProfile />
               </Route>
               <Route path='/'>
                 <Profile currentUser={currentUser} />
