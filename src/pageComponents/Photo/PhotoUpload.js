@@ -28,7 +28,7 @@ const PhotoUpload = () => {
   }
 
   return (
-    <form>
+    <form className='photo_form'>
       <motion.div>
         <label className='labelPhoto'>
           <input type='file' onChange={changeHandler} />

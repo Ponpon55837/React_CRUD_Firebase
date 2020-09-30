@@ -26,8 +26,8 @@ const Profile = ({ currentUser }) => {
   },[])
 
   return (
-    <Jumbotron style={jumbotronStyle}>
-      <h1>Welcome Back {currentUser.displayName}</h1>
+    <Jumbotron style={jumbotronStyle} className='m-5'>
+      <h1 className='mb-5'>Welcome Back {currentUser.displayName}</h1>
       <Button className='m-2' variant="outline-primary" onClick={() =>    setPage('display')}>Display</Button>
       <Button className='m-2' variant="outline-primary" onClick={() => setPage('modify')}>Modify</Button>
       <Container className='my-4'>

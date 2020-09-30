@@ -41,40 +41,40 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj, setPage }) => {
   return (
     <Form className='my-2' onSubmit={handlerFormSubmit}>
       <Form.Group controlId='formFullName'>
-        <Form.Label>Full Name</Form.Label>
+        <Form.Label>Full Name:</Form.Label>
         <input
           className='form-control'
-          placeholder='Input Full Name'
+          placeholder={currentID === '' ? 'Input New Full Name' : 'Update Full Name'}
           name='fullName'
           value={values.fullName}
           onChange={handlerInputChange} />
       </Form.Group>
 
       <Form.Group controlId='formMobile'>
-        <Form.Label>Mobile</Form.Label>
+        <Form.Label>Mobile:</Form.Label>
         <input
           className='form-control'
-          placeholder='Input Mobile'
+          placeholder={currentID === '' ? 'Input New Mobile' : 'Update Mobile'}
           name='mobile'
           value={values.mobile}
           onChange={handlerInputChange} />
       </Form.Group>
 
       <Form.Group controlId='formEmail'>
-        <Form.Label>Email</Form.Label>
+        <Form.Label>Email:</Form.Label>
         <input
           className='form-control'
-          placeholder='Input E-mail'
+          placeholder={currentID === '' ? 'Input New E-mail' : 'Update E-mail'}
           name='email'
           value={values.email}
           onChange={handlerInputChange} />
       </Form.Group>
 
       <Form.Group controlId='formAddress'>
-        <Form.Label>Address</Form.Label>
+        <Form.Label>Address:</Form.Label>
         <textarea
           className='form-control'
-          placeholder='Input Address'
+          placeholder={currentID === '' ? 'Input New Address' : 'Update Address'}
           name='address'
           value={values.address}
           onChange={handlerInputChange} />
