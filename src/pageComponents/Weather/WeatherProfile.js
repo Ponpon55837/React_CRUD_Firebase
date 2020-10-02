@@ -28,6 +28,7 @@ const WeatherProfile = () => {
           return neededElements;
         },{})
       setCurrentWeather({
+        ...currentWeather,
         locationName: data.locationName,
         observationTime: data.time.obsTime,
         description: '天氣：' + weatherElements.Weather,
