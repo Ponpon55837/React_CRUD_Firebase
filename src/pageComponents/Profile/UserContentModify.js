@@ -21,7 +21,7 @@ const UserContetModify = ({ currentUser, snapData, setPage }) => {
     else {
       // console.log(currentUser.displayName)
     }
-  },[])
+  },[currentUser, initialFieldValues])
 
   const handlerInputChange = (e) => {
     const { name, value } = e.target

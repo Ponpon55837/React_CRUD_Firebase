@@ -23,7 +23,7 @@ const Profile = ({ currentUser }) => {
     }).catch(error => {
       console.log("Error getting document:", error)
     })
-  },[])
+  },[currentUser])
 
   return (
     <Jumbotron style={jumbotronStyle} className='m-5'>
