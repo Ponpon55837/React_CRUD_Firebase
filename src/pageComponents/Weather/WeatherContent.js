@@ -1,23 +1,23 @@
 import React from 'react'
 import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg } from '../../style/weather'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
-const WeatherContent = ({ currentWeather }) => {
+const WeatherContent = ({ currentWeather, weatherHandler }) => {
 
   return (
     <Container>
       <Row>
-        <Col xs={12} md={12} style={location}>{currentWeather.locationName}</Col>
-        <Col xs={5} sm={5} md={5}>{currentWeather.observationTime}</Col>
-        <Col xs={4} sm={4} md={4} style={description}>
-          {currentWeather.description}
-        </Col>
+        <Col xs={11} sm={11} md={11} style={location}>{currentWeather.locationName}</Col>
         <Col xs={1} sm={1} md={1}>
-          <RefreshIcon style={refreshSvg} />
+          <Button variant="light" onClick={() => weatherHandler()}><RefreshIcon style={refreshSvg} /></Button>
+        </Col>
+        <Col sm={12} md={6}>{currentWeather.observationTime}</Col>
+        <Col sm={12} md={6} style={description}>
+          {currentWeather.description}
         </Col>
       </Row>
       <Row>
