@@ -15,7 +15,7 @@ const WeatherProfile = () => {
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
   const weatherHandler = () => {
-    fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-59284856-0F85-4E19-A05B-42EDCCC4B575&locationName=臺北')
+    fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=臺北`)
     .then((response) => response.json())
     .then((weatherData) => {
       console.log(weatherData.records.location[0])
