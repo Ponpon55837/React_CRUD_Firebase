@@ -1,13 +1,11 @@
 export const location = {
   fontSize: '1.7rem',
-  color: '#212121',
-  marginBottom: '20px'
+  color: '#212121'
 }
 
 export const description = {
   fontSize: '1rem',
-  color:' #828282',
-  marginBottom: '20px'
+  color:' #828282'
 }
 
 export const temperature = {

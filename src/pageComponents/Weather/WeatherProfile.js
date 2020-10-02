@@ -8,8 +8,8 @@ const WeatherProfile = () => {
     observationTime: '',
     locationName: '',
     description: '',
-    temperature: 27.5,
-    windSpeed: '0.3',
+    temperature: '',
+    windSpeed: '',
     humid: ''
   }
 
@@ -22,16 +22,15 @@ const WeatherProfile = () => {
       const data = weatherData.records.location[0]
       const weatherElements = data.weatherElement.reduce(
         (neededElements, item) => {
-          if (['WDSD', 'TEMP', 'HUMD'].includes(item.elementName)) {
+          if (['WDSD', 'TEMP', 'HUMD', 'Weather'].includes(item.elementName)) {
             neededElements[item.elementName] = item.elementValue;
           }
           return neededElements;
-        },{}
-      )
+        },{})
       setCurrentWeather({
         locationName: data.locationName,
-        observationTime:data.time.obsTime,
-        description: '多雲時晴',
+        observationTime: data.time.obsTime,
+        description: '天氣：' + weatherElements.Weather,
         temperature: weatherElements.TEMP,
         windSpeed: weatherElements.WDSD,
         humid: weatherElements.HUMD,

@@ -11,14 +11,14 @@ const WeatherContent = ({ currentWeather, weatherHandler }) => {
   return (
     <Container>
       <Row>
-        <Col xs={11} sm={11} md={11} style={location}>{currentWeather.locationName}</Col>
-        <Col xs={1} sm={1} md={1}>
+        <Col className='mb-1' xs={9} sm={10} md={11} style={location}>{currentWeather.locationName}{currentWeather.valueTowns}</Col>
+        <Col xs={3} sm={2} md={1}>
           <Button variant="light" onClick={() => weatherHandler()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
-        <Col sm={12} md={6}>{currentWeather.observationTime}</Col>
-        <Col sm={12} md={6} style={description}>
+        <Col sm={12} md={12} style={description}>
           {currentWeather.description}
         </Col>
+        <Col className='mb-2' sm={12} md={12}>{currentWeather.observationTime}</Col>
       </Row>
       <Row>
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
