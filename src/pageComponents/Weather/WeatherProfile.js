@@ -44,7 +44,7 @@ const WeatherProfile = () => {
   },[])
 
   return (
-    <Jumbotron style={jumbotronStyle} className='m-5'>
+    <Jumbotron style={jumbotronStyle} className='my-5'>
       <h1 className='mb-5'>This is Weather Part</h1>
         <Card>
           <Card.Body>

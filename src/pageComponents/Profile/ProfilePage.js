@@ -26,13 +26,13 @@ const Profile = ({ currentUser }) => {
   },[currentUser])
 
   return (
-    <Jumbotron style={jumbotronStyle} className='m-5'>
+    <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12}>
       <h1 className='mb-5'>Welcome Back {currentUser.displayName}</h1>
       <Button className='m-2' variant="outline-primary" onClick={() =>    setPage('display')}>Display</Button>
       <Button className='m-2' variant="outline-primary" onClick={() => setPage('modify')}>Modify</Button>
       <Container className='my-4'>
         <Row>
-          <Col xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Col className='d-none d-sm-none d-md-block' md={12} lg={6} xl={6}>
             <Image className='my-2' src={snapData.photoURL} rounded />
           </Col>
         {
