@@ -20,7 +20,7 @@ npm run build
 ```
 
 ## Test web
-https://react-crud-fcfb1.web.app
+https://react-crud-firebase.vercel.app
 
 ## Here's How it looks
 
