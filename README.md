@@ -21,3 +21,7 @@ npm run build
 
 ## Test web
 https://react-crud-fcfb1.web.app
+
+## Here's How it looks
+
+![site](/screenshot.png)
