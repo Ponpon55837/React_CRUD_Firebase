@@ -6,11 +6,11 @@ import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
-const WeatherContent = ({ currentWeather, weatherHandler }) => {
+const WeatherContent = ({ currentWeather, weatherHandler, weatherReportHandler }) => {
 
   const twoFuncHandler = () => {
     weatherHandler()
-    // weatherReportHandler()
+    weatherReportHandler()
   }
 
   return (
