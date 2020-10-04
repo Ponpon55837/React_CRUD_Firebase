@@ -8,12 +8,17 @@ import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
 const WeatherContent = ({ currentWeather, weatherHandler }) => {
 
+  const twoFuncHandler = () => {
+    weatherHandler()
+    // weatherReportHandler()
+  }
+
   return (
     <Container>
       <Row>
         <Col className='mb-1' xs={9} sm={10} md={11} style={location}>{currentWeather.locationName}{currentWeather.valueTowns}</Col>
         <Col xs={3} sm={2} md={1}>
-          <Button variant="light" onClick={() => weatherHandler()}><RefreshIcon style={refreshSvg} /></Button>
+          <Button variant="light" onClick={() => twoFuncHandler()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
         <Col sm={12} md={12} style={description}>
           {currentWeather.description}
