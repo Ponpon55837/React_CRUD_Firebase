@@ -2,6 +2,7 @@ import React from 'react'
 import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg } from '../../style/weather'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
+import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
@@ -27,7 +28,11 @@ const WeatherContent = ({ currentWeather, weatherHandler }) => {
       <Row>
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'>{Math.round(currentWeather.temperature)}°C</div>
-          <CloudyIcon style={styleSvg} />
+          {
+            currentWeather.description === '晴' ?
+            <CloudyIcon style={styleSvg} /> :
+            <CloudyFOGIcon style={styleSvg} />
+          }
         </Col>
         <Col xs={12} md={6} lg={4} xl={4} style={airFlow}>
           <div className='mr-2'>{currentWeather.windSpeed} m/h</div>
