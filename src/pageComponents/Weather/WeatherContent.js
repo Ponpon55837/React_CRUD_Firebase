@@ -1,5 +1,5 @@
 import React from 'react'
-import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg } from '../../style/weather'
+import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
 import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
@@ -41,6 +41,23 @@ const WeatherContent = ({ currentWeather, weatherHandler }) => {
         <Col xs={12} md={6} lg={4} xl={4} style={rain}>
           <div className='mr-2'>{currentWeather.humid * 100}%</div>
           <RainIcon style={styleSvg} />
+        </Col>
+      </Row>
+      <Row style={textStyle}>
+        <Col xs={12} md={6} lg={4} xl={4} >
+          <div className='mr-2 mt-4'>{currentWeather.pers} hpa</div>
+        </Col>
+        <Col xs={12} md={6} lg={4} xl={4} >
+          <div className='mr-2 mt-4'>{currentWeather.hfx} 公尺/秒</div>
+        </Col>
+        <Col xs={12} md={6} lg={4} xl={4} >
+          <div className='mr-2 mt-4'> 紫外線：
+            {0 <= currentWeather.huiv && currentWeather.huiv <= 2 && '低量級'}
+            {3 <= currentWeather.huiv && currentWeather.huiv <= 5 && '中量級'}
+            {6 <= currentWeather.huiv && currentWeather.huiv <= 7 && '高量級'}
+            {8 <= currentWeather.huiv && currentWeather.huiv <= 10 && '過量級'}
+            {11 <= currentWeather.huiv && '危險級'}
+          </div>
         </Col>
       </Row>
     </Container>

@@ -41,3 +41,11 @@ export const refreshSvg = {
   width: '1rem',
   height: 'auto'
 }
+
+export const textStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  fontSize: '2rem',
+  fontWeight: '300',
+  color: '#828282',
+}

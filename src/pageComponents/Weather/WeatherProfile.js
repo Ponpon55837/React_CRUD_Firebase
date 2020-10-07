@@ -10,7 +10,10 @@ const WeatherProfile = () => {
     description: '',
     temperature: '',
     windSpeed: '',
-    humid: ''
+    humid: '',
+    pers: '',
+    hfx: '',
+    huiv: ''
   }
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
@@ -22,7 +25,7 @@ const WeatherProfile = () => {
       const data = weatherData.records.location[0]
       const weatherElements = data.weatherElement.reduce(
         (neededElements, item) => {
-          if (['WDSD', 'TEMP', 'HUMD', 'Weather'].includes(item.elementName)) {
+          if (['WDSD', 'TEMP', 'HUMD', 'Weather', 'PRES', 'H_FX', 'H_UVI' ].includes(item.elementName)) {
             neededElements[item.elementName] = item.elementValue;
           }
           return neededElements;
@@ -35,6 +38,9 @@ const WeatherProfile = () => {
         temperature: weatherElements.TEMP,
         windSpeed: weatherElements.WDSD,
         humid: weatherElements.HUMD,
+        pers: weatherElements.PRES,
+        hfx: weatherElements.H_FX,
+        huiv: weatherElements.H_UVI
       }, console.log('weatherHandler',currentWeather))
     })
   }
