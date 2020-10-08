@@ -18,13 +18,12 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
 
   const twoFuncHandler = (arr) => {
     setCurrentWeather({...currentWeather, locationName: arr.location})
-    console.log(currentWeather)
   }
 
   return (
     <Container>
       <Row>
-          <DropdownButton className='m-2' variant='info' title={currentWeather.locationName}>
+          <DropdownButton className='m-2' variant='info' title={`選擇地區：${currentWeather.locationName}`}>
             { locationArr.map(arr =>
               <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncHandler(arr)}>{arr.location}</Dropdown.Item>
             )}
