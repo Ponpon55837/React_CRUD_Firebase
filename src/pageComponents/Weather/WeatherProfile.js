@@ -6,7 +6,7 @@ import { Jumbotron, Card } from 'react-bootstrap'
 const WeatherProfile = () => {
   const initialValues = {
     observationTime: '',
-    locationName: '',
+    locationName: '臺東',
     description: '',
     temperature: '',
     windSpeed: '',
@@ -18,10 +18,10 @@ const WeatherProfile = () => {
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
   const weatherHandler = async () => {
-    return await fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=臺北`)
+    return await fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=${currentWeather.locationName}`)
     .then((response) => response.json())
     .then((weatherData) => {
-      console.log(weatherData.records.location[0])
+      console.log('records', weatherData.records.location[0])
       const data = weatherData.records.location[0]
       const weatherElements = data.weatherElement.reduce(
         (neededElements, item) => {
@@ -55,7 +55,7 @@ const WeatherProfile = () => {
       <h1 className='mb-5'>This is Weather Part</h1>
         <Card>
           <Card.Body>
-            <WeatherContent currentWeather={currentWeather} weatherHandler={weatherHandler} />
+            <WeatherContent currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
           </Card.Body>
         </Card>
     </Jumbotron>
