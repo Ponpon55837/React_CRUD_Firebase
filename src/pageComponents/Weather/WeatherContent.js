@@ -1,6 +1,6 @@
 import React from 'react'
 import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col,Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
 import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
@@ -9,31 +9,32 @@ import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
 const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) => {
 
-  const twoFuncHandler = (arr) => {
-    setCurrentWeather({...currentWeather, locationName: arr.location})
-    weatherHandler()
-  }
-
   const locationArr = [
     {id: 1, location: '臺北'},
     {id: 2, location: '臺中'},
     {id: 3, location: '高雄'},
+    {id: 4, location: '嘉義'},
   ]
+
+  const twoFuncHandler = (arr) => {
+    setCurrentWeather({...currentWeather, locationName: arr.location})
+    console.log(currentWeather)
+  }
 
   return (
     <Container>
       <Row>
-        { locationArr.map(arr =>
-          <Button className='m-2' variant='info' key={arr.id} onClick={() => twoFuncHandler(arr)}>
-            {arr.location}
-          </Button>
-        )}
-      </Row>
-      <Row>
-        <Col className='mb-1' xs={9} sm={10} md={11} style={location}>{currentWeather.locationName}{currentWeather.valueTowns}</Col>
-        <Col xs={3} sm={2} md={1}>
+          <DropdownButton className='m-2' variant='info' title={currentWeather.locationName}>
+            { locationArr.map(arr =>
+              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncHandler(arr)}>{arr.location}</Dropdown.Item>
+            )}
+          </DropdownButton>
+        <Button className='m-2' variant='info' onClick={() => weatherHandler()}>Submit</Button>
+        <Col className='m-2' xs={4} sm={2} md={1}>
           <Button variant="light" onClick={() => weatherHandler()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
+      </Row>
+      <Row>
         <Col sm={12} md={12} style={description}>
           {currentWeather.description}
         </Col>
