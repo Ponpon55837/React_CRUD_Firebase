@@ -6,7 +6,7 @@ import { Jumbotron, Card } from 'react-bootstrap'
 const WeatherProfile = () => {
   const initialValues = {
     observationTime: '',
-    locationName: '臺東',
+    locationName: '臺北',
     description: '',
     temperature: '',
     windSpeed: '',

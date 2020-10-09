@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { Container, Row, Col,Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
@@ -9,6 +9,8 @@ import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
 const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) => {
 
+  const [btnState, setBtnState] = useState(false)
+
   const locationArr = [
     {id: 1, location: '臺北'},
     {id: 2, location: '臺中'},
@@ -16,8 +18,14 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
     {id: 4, location: '嘉義'},
   ]
 
-  const twoFuncHandler = (arr) => {
+  const twoFuncForWeather = (arr) => {
     setCurrentWeather({...currentWeather, locationName: arr.location})
+    setBtnState(true)
+  }
+
+  const twoFuncForChangeBtn = () => {
+    weatherHandler()
+    setBtnState(false)
   }
 
   return (
@@ -25,10 +33,12 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
       <Row>
           <DropdownButton className='m-2' variant='info' title={`選擇地區：${currentWeather.locationName}`}>
             { locationArr.map(arr =>
-              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncHandler(arr)}>{arr.location}</Dropdown.Item>
+              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
             )}
           </DropdownButton>
-        <Button className='m-2' variant='info' onClick={() => weatherHandler()}>Submit</Button>
+        { btnState ?
+          <Button className='m-2' variant='info' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
+        }
         <Col className='m-2' xs={4} sm={2} md={1}>
           <Button variant="light" onClick={() => weatherHandler()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
