@@ -15,7 +15,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
 
   const twoFuncForAreaChange = (areaArr) => {
     setAreaState(areaArr.area)
-    setCurrentWeather(currentWeather.locationName ='')
+    setCurrentWeather({...currentWeather, locationName: ''})
   }
 
   const twoFuncForWeather = (weatherArr) => {
