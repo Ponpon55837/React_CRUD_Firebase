@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
+import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import { Container, Row, Col,Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
 import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
@@ -10,16 +11,15 @@ import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) => {
 
   const [btnState, setBtnState] = useState(false)
+  const [areaState, setAreaState] = useState('北部')
 
-  const locationArr = [
-    {id: 1, location: '臺北'},
-    {id: 2, location: '臺中'},
-    {id: 3, location: '高雄'},
-    {id: 4, location: '嘉義'},
-  ]
+  const twoFuncForAreaChange = (areaArr) => {
+    setAreaState(areaArr.area)
+    setCurrentWeather(currentWeather.locationName ='')
+  }
 
-  const twoFuncForWeather = (arr) => {
-    setCurrentWeather({...currentWeather, locationName: arr.location})
+  const twoFuncForWeather = (weatherArr) => {
+    setCurrentWeather({...currentWeather, locationName: weatherArr.location})
     setBtnState(true)
   }
 
@@ -31,8 +31,22 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
   return (
     <Container>
       <Row>
-          <DropdownButton className='m-2' variant='info' title={`選擇地區：${currentWeather.locationName}`}>
-            { locationArr.map(arr =>
+          <DropdownButton className='m-2' variant='light' title={`地區：${areaState}`}>
+            { areaArr.map(arr =>
+              <Dropdown.Item key={arr.areaid} href="#" onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
+            )}
+          </DropdownButton>
+          <DropdownButton className='m-2' variant='light' title={currentWeather.locationName ? `縣市：${currentWeather.locationName}` : '選擇縣市'}>
+            { areaState === '北部' && locationArrNorth.map(arr =>
+              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            )}
+            { areaState === '中部' && locationArrCenter.map(arr =>
+              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            )}
+            { areaState === '南部' && locationArrSouth.map(arr =>
+              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            )}
+            { areaState === '東部' && locationArrEast.map(arr =>
               <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
             )}
           </DropdownButton>
