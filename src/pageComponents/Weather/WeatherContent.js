@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
+import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import LocationArrComponents from './LocationArrComponents'
 import HuivConmponents from './HuivConmponents'
@@ -56,7 +56,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'>{Math.round(currentWeather.temperature)}°C</div>
           {
-            currentWeather.description == '晴' ?
+            currentWeather.description === '晴' ?
             <CloudyIcon style={styleSvg} /> :
             <CloudyFOGIcon style={styleSvg} />
           }

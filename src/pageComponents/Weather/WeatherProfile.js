@@ -17,7 +17,6 @@ const WeatherProfile = () => {
   }
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
-  const [btnState, setBtnState] = useState(false)
 
   const weatherHandler = async () => {
     return await fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=${currentWeather.locationName}`)
