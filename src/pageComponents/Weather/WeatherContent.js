@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { location, description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
+import LocationArrComponents from './LocationArrComponents'
+import HuivConmponents from './HuivConmponents'
 import { Container, Row, Col,Dropdown, DropdownButton, Button } from 'react-bootstrap'
-import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
+import { ReactComponent as CloudyIcon } from './images/day-clear.svg'
 import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
@@ -36,25 +38,12 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
               <Dropdown.Item key={arr.areaid} href="#" onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
             )}
           </DropdownButton>
-          <DropdownButton className='m-2' variant='light' title={currentWeather.locationName ? `縣市：${currentWeather.locationName}` : '選擇縣市'}>
-            { areaState === '北部' && locationArrNorth.map(arr =>
-              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
-            )}
-            { areaState === '中部' && locationArrCenter.map(arr =>
-              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
-            )}
-            { areaState === '南部' && locationArrSouth.map(arr =>
-              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
-            )}
-            { areaState === '東部' && locationArrEast.map(arr =>
-              <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
-            )}
-          </DropdownButton>
+          <LocationArrComponents currentWeather={currentWeather} areaState={areaState} locationArrNorth={locationArrNorth} locationArrCenter={locationArrCenter} locationArrSouth={locationArrSouth} locationArrEast={locationArrEast} twoFuncForWeather={twoFuncForWeather} />
         { btnState ?
           <Button className='m-2' variant='info' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
         }
         <Col className='m-2' xs={4} sm={2} md={1}>
-          <Button variant="light" onClick={() => weatherHandler()}><RefreshIcon style={refreshSvg} /></Button>
+          <Button variant="light" onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
       <Row>
@@ -67,7 +56,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'>{Math.round(currentWeather.temperature)}°C</div>
           {
-            currentWeather.description === '晴' ?
+            currentWeather.description == '晴' ?
             <CloudyIcon style={styleSvg} /> :
             <CloudyFOGIcon style={styleSvg} />
           }
@@ -89,13 +78,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
           <div className='mr-2 mt-4'>{currentWeather.hfx} 公尺/秒</div>
         </Col>
         <Col xs={12} md={6} lg={4} xl={4} >
-          <div className='mr-2 mt-4'> 紫外線：
-            {0 <= currentWeather.huiv && currentWeather.huiv < 3 && '低量級'}
-            {3 <= currentWeather.huiv && currentWeather.huiv < 6 && '中量級'}
-            {6 <= currentWeather.huiv && currentWeather.huiv < 8 && '高量級'}
-            {8 <= currentWeather.huiv && currentWeather.huiv < 11 && '過量級'}
-            {11 <= currentWeather.huiv && '危險級'}
-          </div>
+          <HuivConmponents currentWeather={currentWeather} />
         </Col>
       </Row>
     </Container>
