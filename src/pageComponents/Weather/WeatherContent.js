@@ -3,10 +3,8 @@ import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyl
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import LocationArrComponents from './LocationArrComponents'
 import HuivConmponents from './HuivConmponents'
+import WeatherDescription from './WeatherDescription'
 import { Container, Row, Col, Dropdown, DropdownButton, Button } from 'react-bootstrap'
-import { ReactComponent as ClearIcon } from './images/day-clear.svg'
-import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
-import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
@@ -56,10 +54,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
       <Row>
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'>{Math.round(currentWeather.temperature)}°C</div>
-          { currentWeather.description === '天氣：晴' &&
-            <ClearIcon style={styleSvg} /> }
-          { currentWeather.description === '天氣：多雲' && <CloudyIcon style={styleSvg} /> }
-          { currentWeather.description === '天氣：陰' && <CloudyFOGIcon style={styleSvg} /> }
+          <WeatherDescription currentWeather={currentWeather} style={styleSvg} />
         </Col>
         <Col xs={12} md={6} lg={4} xl={4} style={airFlow}>
           <div className='mr-2'>{currentWeather.windSpeed} m/h</div>
