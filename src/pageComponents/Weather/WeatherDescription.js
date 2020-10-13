@@ -3,6 +3,7 @@ import { ReactComponent as ClearIcon } from './images/day-clear.svg'
 import { ReactComponent as CloudyIcon } from './images/day-cloudy.svg'
 import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
 import { ReactComponent as DayFOGIcon } from './images/day-fog.svg'
+import { ReactComponent as ClearWithRainIcon } from './images/day-partially-clear-with-rain.svg'
 
 const WeatherDescription = ({ currentWeather, styleSvg }) => {
 
@@ -18,6 +19,8 @@ const WeatherDescription = ({ currentWeather, styleSvg }) => {
         return (<DayFOGIcon style={styleSvg} />)
       case '天氣：陰':
         return (<CloudyFOGIcon style={styleSvg} />)
+      case '天氣：陰有雨'
+        return (<ClearWithRainIcon style={styleSvg} />)
     }
   }
 
