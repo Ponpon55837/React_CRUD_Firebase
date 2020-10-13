@@ -19,7 +19,7 @@ const WeatherDescription = ({ currentWeather, styleSvg }) => {
         return (<DayFOGIcon style={styleSvg} />)
       case '天氣：陰':
         return (<CloudyFOGIcon style={styleSvg} />)
-      case '天氣：陰有雨'
+      case '天氣：陰有雨':
         return (<ClearWithRainIcon style={styleSvg} />)
     }
   }
