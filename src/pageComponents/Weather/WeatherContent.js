@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import LocationArrComponents from './LocationArrComponents'
-import HuivConmponents from './HuivConmponents'
-import WeatherDescription from './WeatherDescription'
+import ValueConmponents from './ValueConmponents'
+import WeatherDetail from './WeatherDetail'
 import { Container, Row, Col, Dropdown, DropdownButton, Button } from 'react-bootstrap'
-import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
-import { ReactComponent as RainIcon } from './images/rain.svg'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
 const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) => {
@@ -45,37 +43,8 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
           <Button variant="light" onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
-      <Row>
-        <Col sm={12} md={12} style={description}>
-          {currentWeather.description}
-        </Col>
-        <Col className='mb-2' sm={12} md={12}>{currentWeather.observationTime}</Col>
-      </Row>
-      <Row>
-        <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
-          <div className='mr-2'>{Math.round(currentWeather.temperature)}°C</div>
-          <WeatherDescription currentWeather={currentWeather} style={styleSvg} />
-        </Col>
-        <Col xs={12} md={6} lg={4} xl={4} style={airFlow}>
-          <div className='mr-2'>{currentWeather.windSpeed} m/h</div>
-          <AirFlowIcon style={styleSvg} />
-        </Col>
-        <Col xs={12} md={6} lg={4} xl={4} style={rain}>
-          <div className='mr-2'>{(currentWeather.humid * 100).toFixed(2)}%</div>
-          <RainIcon style={styleSvg} />
-        </Col>
-      </Row>
-      <Row style={textStyle}>
-        <Col xs={12} md={6} lg={4} xl={4} >
-          <div className='mr-2 mt-4'>{currentWeather.pers} hpa</div>
-        </Col>
-        <Col xs={12} md={6} lg={4} xl={4} >
-          <div className='mr-2 mt-4'>{currentWeather.hfx} 公尺/秒</div>
-        </Col>
-        <Col xs={12} md={6} lg={4} xl={4} >
-          <HuivConmponents currentWeather={currentWeather} />
-        </Col>
-      </Row>
+      <WeatherDetail currentWeather={currentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
+      <ValueConmponents currentWeather={currentWeather} textStyle={textStyle} />
     </Container>
   )
 }
