@@ -35,7 +35,7 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
     <>
       <Row>
         <Col sm={12} md={12} style={description}>
-          {currentWeather.description !== '99' ? currentWeather.description : ''}
+          {currentWeather.description !== '-99' ? currentWeather.description : ''}
         </Col>
         <Col className='mb-2' sm={12} md={12}>{currentWeather.observationTime}</Col>
       </Row>
