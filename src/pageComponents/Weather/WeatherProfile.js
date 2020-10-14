@@ -18,6 +18,14 @@ const WeatherProfile = () => {
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
 
+  const countryWeaherHandelr = async () => {
+    return await fetch(`https://opendata.cwb.gov.tw/api//v1/rest/datastore/F-D0047-089?Authorization=${process.env.REACT_APP_WEATHER_AUTH}`)
+    .then((res) => res.json())
+    .then((countryData) => {
+      console.log(countryData)
+    })
+  }
+
   const weatherHandler = async () => {
     return await fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=${currentWeather.locationName}`)
     .then((response) => response.json())
