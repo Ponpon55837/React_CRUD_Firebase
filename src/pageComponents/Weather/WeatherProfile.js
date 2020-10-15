@@ -22,7 +22,11 @@ const WeatherProfile = () => {
     return await fetch(`https://opendata.cwb.gov.tw/api//v1/rest/datastore/F-D0047-089?Authorization=${process.env.REACT_APP_WEATHER_AUTH}`)
     .then((res) => res.json())
     .then((countryData) => {
-      console.log(countryData)
+      const countryLocat = countryData.records.locations[0].location
+      console.log(countryLocat)
+      countryLocat.map(da => {
+        console.log(<p>{da}</p>)
+      })
     })
   }
 
@@ -57,6 +61,7 @@ const WeatherProfile = () => {
   useEffect(() => {
     // weatherReportHandler()
     weatherHandler()
+    countryWeaherHandelr()
   },[])
 
   return (
