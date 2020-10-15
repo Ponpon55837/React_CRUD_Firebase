@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import WeatherContent from './WeatherContent'
+import CountryWeatherContent from './CountryWeatherContent'
 import { jumbotronStyle } from '../../style/style'
-import { Jumbotron, Card } from 'react-bootstrap'
+import { Jumbotron, Card, Button } from 'react-bootstrap'
 
 const WeatherProfile = () => {
   const initialValues = {
@@ -17,17 +18,24 @@ const WeatherProfile = () => {
   }
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
+  const [weatherPage, setWeatherPage] = useState('preWeather')
+  const [countryWeatherValue, setCountryWeatherValue] = useState({locationName: ''})
 
-  const countryWeaherHandelr = async () => {
-    return await fetch(`https://opendata.cwb.gov.tw/api//v1/rest/datastore/F-D0047-089?Authorization=${process.env.REACT_APP_WEATHER_AUTH}`)
-    .then((res) => res.json())
-    .then((countryData) => {
-      const countryLocat = countryData.records.locations[0].location
-      console.log(countryLocat)
-      countryLocat.map(da => {
-        return console.log(<p>{da}</p>)
-      })
-    })
+  const pageSwitch = () => {
+    switch(weatherPage) {
+      case 'preWeather':
+      return (
+        <WeatherContent currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
+      )
+      case 'countryWeather':
+      return (
+        <CountryWeatherContent />
+      )
+      default:
+      return (
+        <WeatherContent currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
+      )
+    }
   }
 
   const weatherHandler = async () => {
@@ -58,8 +66,23 @@ const WeatherProfile = () => {
     })
   }
 
+  const countryWeaherHandelr = async () => {
+    return await fetch(`https://opendata.cwb.gov.tw/api//v1/rest/datastore/F-D0047-089?Authorization=${process.env.REACT_APP_WEATHER_AUTH}`)
+    .then((res) => res.json())
+    .then((countryData) => {
+      const countryLocat = countryData.records.locations[0].location
+      for(let i = 0; i < countryLocat.length; i++) {
+        let coutData = countryLocat[i]
+        console.log(coutData.locationName)
+        return coutData
+      }
+      setCountryWeatherValue({
+        locationName: countryLocat[0].locationName
+      }, console.log(countryWeatherValue))
+    })
+  }
+
   useEffect(() => {
-    // weatherReportHandler()
     weatherHandler()
     countryWeaherHandelr()
   },[])
@@ -67,11 +90,13 @@ const WeatherProfile = () => {
   return (
     <Jumbotron style={jumbotronStyle} className='my-5'>
       <h1 className='mb-5'>This is Weather Part</h1>
-        <Card>
-          <Card.Body>
-            <WeatherContent currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
-          </Card.Body>
-        </Card>
+      <Button className='m-2' variant="outline-primary" onClick={() =>    setWeatherPage('preWeather')}>PreWeather</Button>
+      <Button className='m-2' variant="outline-primary" onClick={() => setWeatherPage('countryWeather')}>CountryWeather</Button>
+      <Card>
+        <Card.Body>
+          { pageSwitch() }
+        </Card.Body>
+      </Card>
     </Jumbotron>
   )
 }
