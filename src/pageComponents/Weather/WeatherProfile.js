@@ -25,7 +25,7 @@ const WeatherProfile = () => {
       const countryLocat = countryData.records.locations[0].location
       console.log(countryLocat)
       countryLocat.map(da => {
-        console.log(<p>{da}</p>)
+        return console.log(<p>{da}</p>)
       })
     })
   }
