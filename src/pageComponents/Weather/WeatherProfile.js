@@ -71,14 +71,18 @@ const WeatherProfile = () => {
     .then((res) => res.json())
     .then((countryData) => {
       const countryLocat = countryData.records.locations[0].location
-      for(let i = 0; i < countryLocat.length; i++) {
-        let coutData = countryLocat[i]
-        console.log(coutData.locationName)
-        return coutData
-      }
-      setCountryWeatherValue({
-        locationName: countryLocat[0].locationName
-      }, console.log(countryWeatherValue))
+      // for(let i = 0; i < countryLocat.length; i++) {
+      //   let coutData = countryLocat[i]
+      //   console.log(coutData.locationName)
+      //   return coutData
+      // }
+      // setCountryWeatherValue({
+      //   locationName: countryLocat[0].locationName
+      // }, console.log(countryWeatherValue))
+      countryLocat.forEach(item => {
+        console.log(item)
+        console.log(item.locationName, item.geocode)
+      })
     })
   }
 
