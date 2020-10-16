@@ -19,7 +19,10 @@ const WeatherProfile = () => {
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
   const [weatherPage, setWeatherPage] = useState('preWeather')
-  const [countryWeatherValue, setCountryWeatherValue] = useState({locationName: ''})
+  const [countryWeatherValue, setCountryWeatherValue] = useState([{
+    locationName: '',
+    geocode: ''
+  }])
 
   const pageSwitch = () => {
     switch(weatherPage) {
@@ -71,17 +74,15 @@ const WeatherProfile = () => {
     .then((res) => res.json())
     .then((countryData) => {
       const countryLocat = countryData.records.locations[0].location
-      // for(let i = 0; i < countryLocat.length; i++) {
-      //   let coutData = countryLocat[i]
-      //   console.log(coutData.locationName)
-      //   return coutData
-      // }
-      // setCountryWeatherValue({
-      //   locationName: countryLocat[0].locationName
-      // }, console.log(countryWeatherValue))
       countryLocat.forEach(item => {
         console.log(item)
-        console.log(item.locationName, item.geocode)
+        setCountryWeatherValue([
+          ...countryWeatherValue,
+          {
+            locationName: item.locationName,
+            geocode: item.geocode
+          }
+        ])
       })
     })
   }
