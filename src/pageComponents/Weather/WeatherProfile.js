@@ -19,10 +19,7 @@ const WeatherProfile = () => {
 
   const [currentWeather, setCurrentWeather] = useState(initialValues)
   const [weatherPage, setWeatherPage] = useState('preWeather')
-  const [countryWeatherValue, setCountryWeatherValue] = useState([{
-    locationName: '',
-    geocode: ''
-  }])
+  const [countryWeatherValue, setCountryWeatherValue] = useState([])
 
   const pageSwitch = () => {
     switch(weatherPage) {
@@ -32,7 +29,7 @@ const WeatherProfile = () => {
       )
       case 'countryWeather':
       return (
-        <CountryWeatherContent />
+        <CountryWeatherContent countryWeatherValue={countryWeatherValue} />
       )
       default:
       return (
@@ -74,16 +71,7 @@ const WeatherProfile = () => {
     .then((res) => res.json())
     .then((countryData) => {
       const countryLocat = countryData.records.locations[0].location
-      countryLocat.forEach(item => {
-        console.log(item)
-        setCountryWeatherValue([
-          ...countryWeatherValue,
-          {
-            locationName: item.locationName,
-            geocode: item.geocode
-          }
-        ])
-      })
+      setCountryWeatherValue(countryLocat)
     })
   }
 
