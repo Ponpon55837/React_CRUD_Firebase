@@ -6,13 +6,20 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
   return (
     <>
       {countryWeatherValue.map(items =>
-        <Toast key={items.locationName} >
+        <Toast style={{minWidth: '100px', maxWidth: '1000px'}} key={items.locationName} >
           <Toast.Header>
             <strong className="mr-auto">{items.locationName}</strong>
           </Toast.Header>
-          <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+          <Toast.Body>
+            {items.weatherElement.map(item =>
+              <p key={item.elementName}>
+                {item.description}:
+              </p>
+            )}
+          </Toast.Body>
         </Toast>
       )}
+      {console.log(countryWeatherValue)}
     </>
   )
 }
