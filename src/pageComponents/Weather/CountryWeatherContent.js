@@ -13,7 +13,8 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
           <Toast.Body>
             {items.weatherElement.map(item =>
               <p key={item.elementName}>
-                {item.description}:
+                {item.description}({item.elementName}):
+                {console.log(item)}
               </p>
             )}
           </Toast.Body>
