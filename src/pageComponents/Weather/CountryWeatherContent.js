@@ -3,6 +3,12 @@ import { Toast } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
+  const mapFirstLayer = (item) => {
+    item.time.map(ite =>
+      <p>{ite.elementValue}</p>
+    )
+  }
+
   return (
     <>
       {countryWeatherValue.map(items =>
@@ -14,7 +20,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
             {items.weatherElement.map(item =>
               <p key={item.elementName}>
                 {item.description}({item.elementName}):
-                {console.log(item)}
+                {mapFirstLayer(item)}
               </p>
             )}
           </Toast.Body>
