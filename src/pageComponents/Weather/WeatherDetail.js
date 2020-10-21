@@ -26,6 +26,8 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
         return (<ClearWithRainIcon style={styleSvg} />)
       case '天氣：多雲有靄':
         return (<CloudyIcon style={styleSvg} />)
+      case '天氣：陰有霾':
+        return (<DayFOGIcon style={styleSvg} />)
       default:
         return (<ClearIcon style={styleSvg} />)
     }
