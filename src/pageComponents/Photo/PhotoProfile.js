@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import PhotoGrid from './PhotoGrid'
 import PhotoUpload from './PhotoUpload'
 import Model from './Model'

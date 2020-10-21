@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 // import { resetEmail, signOut } from '../../firebase/Config'
 import { Col, Form, Button, Alert } from 'react-bootstrap'
 

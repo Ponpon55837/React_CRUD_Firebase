@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react';
 
 // setInterval in react hooks to use
 export const useInterval = (callback, delay) => {

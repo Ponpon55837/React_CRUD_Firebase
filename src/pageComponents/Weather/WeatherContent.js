@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import LocationArrComponents from './LocationArrComponents'
