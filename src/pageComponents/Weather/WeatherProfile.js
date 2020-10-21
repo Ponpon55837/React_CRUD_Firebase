@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import WeatherContent from './WeatherContent'
 import CountryWeatherContent from './CountryWeatherContent'
 import { jumbotronStyle } from '../../style/style'

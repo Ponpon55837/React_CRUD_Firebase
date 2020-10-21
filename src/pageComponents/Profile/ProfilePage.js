@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { jumbotronStyle } from '../../style/style'
 // import useFireStore from '../../hooks/useFireStore'
 import { projectFirestore } from '../../firebase/Config'

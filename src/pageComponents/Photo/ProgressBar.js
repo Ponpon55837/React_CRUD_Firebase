@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useEffect } from 'react';
 import useStorage from '../../hooks/useStorage.js'
 import { motion } from 'framer-motion'
 

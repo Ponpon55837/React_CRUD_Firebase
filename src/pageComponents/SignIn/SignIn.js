@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { jumbotronStyle } from '../../style/style'
 import { signInWithEmail, signOut } from '../../firebase/Config'
 import { Container, Row, Col, Jumbotron, Form, Button, Alert } from 'react-bootstrap'

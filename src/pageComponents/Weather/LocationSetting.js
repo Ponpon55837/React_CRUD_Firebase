@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 
 // STEP 1：匯入 availableLocations
 import { availableLocations } from './utils'
