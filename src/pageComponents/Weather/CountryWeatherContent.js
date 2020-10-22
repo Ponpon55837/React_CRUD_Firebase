@@ -5,12 +5,6 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
 
   const [locatValue, setLocatValue] = useState('')
 
-  const mapFirstLayer = (item) => {
-    item.time.map(ite =>
-      <p>{ite.elementValue}</p>
-    )
-  }
-
   return (
     <>
       {countryWeatherValue.map(items =>
@@ -26,7 +20,11 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
           {items.weatherElement.map(item =>
             <Col xs={12} sm={12} md={12} key={item.elementName}>
               {item.description}({item.elementName}):
-              {console.log(item.time.map(it => it.elementValue))}
+              {item.time.pop().elementValue.map(ite =>
+                <p key={`${ite.value}+${ite.measures}`}>
+                  {ite.value}{ite.measures}
+                </p>
+              )}
             </Col>
           )}
           </Card.Body>
