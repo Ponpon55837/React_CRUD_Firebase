@@ -1,5 +1,5 @@
 import React from 'react'
-import { Toast } from 'react-bootstrap'
+import { Button, Card, Col } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
@@ -12,19 +12,22 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
   return (
     <>
       {countryWeatherValue.map(items =>
-        <Toast style={{minWidth: '100px', maxWidth: '1000px'}} key={items.locationName} >
-          <Toast.Header>
+        <Button className='m-2' key={items.locationName}>{items.locationName}</Button>
+      )}
+      {countryWeatherValue.map(items =>
+        <Card className='mb-3' key={items.locationName}>
+          <Card.Header>
             <strong className="mr-auto">{items.locationName}</strong>
-          </Toast.Header>
-          <Toast.Body>
-            {items.weatherElement.map(item =>
-              <p key={item.elementName}>
-                {item.description}({item.elementName}):
-                {mapFirstLayer(item)}
-              </p>
-            )}
-          </Toast.Body>
-        </Toast>
+          </Card.Header>
+          <Card.Body>
+          {items.weatherElement.map(item =>
+            <Col xs={12} sm={12} md={12} key={item.elementName}>
+              {item.description}({item.elementName}):
+              {mapFirstLayer(item)}
+            </Col>
+          )}
+          </Card.Body>
+        </Card>
       )}
       {console.log(countryWeatherValue)}
     </>
