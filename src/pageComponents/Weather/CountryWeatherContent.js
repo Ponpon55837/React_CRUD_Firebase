@@ -26,7 +26,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
           {items.weatherElement.map(item =>
             <Col xs={12} sm={12} md={12} key={item.elementName}>
               {item.description}({item.elementName}):
-              {console.log(locatValue)}
+              {console.log(item.time.map(it => it.elementValue))}
             </Col>
           )}
           </Card.Body>
