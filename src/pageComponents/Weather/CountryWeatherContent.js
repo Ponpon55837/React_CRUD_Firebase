@@ -7,7 +7,10 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
 
   return (
     <>
-      {countryWeatherValue.map(items =>
+      {countryWeatherValue
+        .sort((a, b) => {
+        return (a.geocode/100) > (b.geocode/100)})
+        .map(items =>
         <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
       )}
       {countryWeatherValue.map(items =>
