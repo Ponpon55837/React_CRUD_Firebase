@@ -32,7 +32,11 @@ export const footerStyle = {
 
 export const jumbotronStyle = {
   marginTop: '0',
-  opacity: '0.8'
+  opacity: '0.8',
+  maxWidth: '100%',
+  marginTop: '80px',
+  marginBottom: '80px',
+  padding: '2rem 2rem'
 }
 
 export const imageStyle = {

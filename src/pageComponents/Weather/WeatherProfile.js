@@ -81,7 +81,7 @@ const WeatherProfile = () => {
   },[])
 
   return (
-    <Jumbotron style={jumbotronStyle} className='my-5'>
+    <Jumbotron style={jumbotronStyle}>
       <h1 className='mb-5'>This is Weather Part</h1>
       <Button className='m-2' variant="outline-primary" onClick={() =>    setWeatherPage('preWeather')}>PreWeather</Button>
       <Button className='m-2' variant="outline-primary" onClick={() => setWeatherPage('countryWeather')}>CountryWeather</Button>
