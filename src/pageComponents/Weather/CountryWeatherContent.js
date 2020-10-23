@@ -1,18 +1,30 @@
 import React, { useState } from 'react'
-import { Button, Card, Col } from 'react-bootstrap'
+import { ListGroup, Button, Card, Col } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
   const [locatValue, setLocatValue] = useState('')
+  const sixCityValue = countryWeatherValue.sort((a, b) => {
+    return (a.geocode/100) > (b.geocode/100)})
+    .filter(arr => arr.geocode < 1000)
+  const noneSixCity = countryWeatherValue.sort((a, b) => {
+    return (a.geocode/100) < (b.geocode/100)})
+    .filter(arr => arr.geocode > 1000)
 
   return (
     <>
-      {countryWeatherValue
-        .sort((a, b) => {
-        return (a.geocode/100) > (b.geocode/100)})
-        .map(items =>
-        <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
-      )}
+      <ListGroup className='mb-3'>
+        <ListGroup.Item>
+          {sixCityValue.map(items =>
+            <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+          )}
+        </ListGroup.Item>
+        <ListGroup.Item>
+          {noneSixCity.map(items =>
+            <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+          )}
+        </ListGroup.Item>
+      </ListGroup>
       {countryWeatherValue.map(items =>
         locatValue === items.locationName ?
         <Card className='mb-3' key={items.locationName}>
