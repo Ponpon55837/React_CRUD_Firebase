@@ -40,7 +40,6 @@ const App = () => {
     <div style={bgStyle}>
       <Navbar currentUser={currentUser} setPage={setPage} />
         <BrowserRouter>
-          <Container className='mt-3'>
             <Switch>
               <Route path='/contacts'>
                 <Contacts />
@@ -55,7 +54,6 @@ const App = () => {
                 <Profile currentUser={currentUser} />
               </Route>
             </Switch>
-          </Container>
         </BrowserRouter>
       <Footer />
     </div>

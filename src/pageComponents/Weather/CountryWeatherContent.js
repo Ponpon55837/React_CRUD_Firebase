@@ -33,7 +33,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
           </Card.Header>
           <Card.Body>
           {items.weatherElement.map(item =>
-            <Col xs={12} sm={12} md={12} key={item.elementName}>
+            <Col xs={12} sm={12} md={4} key={item.elementName}>
               {item.description}({item.elementName}):
               {item.time.pop().elementValue.map(ite =>
                 <p key={`${ite.value}+${ite.measures}`}>
