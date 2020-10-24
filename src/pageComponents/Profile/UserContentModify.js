@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 // import { resetEmail, signOut } from '../../firebase/Config'
 import { Col, Form, Button, Alert } from 'react-bootstrap'
 
 const UserContetModify = ({ currentUser, snapData, setPage }) => {
-  const initialFieldValues = {
-    fullName: '',
-    error: ''
-  }
+  const initialFieldValues = useMemo(() => ({fullName: '', error: ''}) ,[])
 
   const [user, setUser] = useState({ fullName: currentUser.displayName })
   const [subSuccess, setSubSuccess] = useState(false)
