@@ -3,7 +3,7 @@ import ContactsForm from './ContactsForm'
 import ContactsTable from './ContactsTable'
 import { projectDB } from '../../firebase/Config'
 import { jumbotronStyle } from '../../style/style.js'
-import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
+import { Jumbotron, Button } from 'react-bootstrap'
 
 const Contacts = ({ currentUser }) => {
   const [contactsObj, setContactsObj] = useState({})
@@ -76,16 +76,10 @@ const Contacts = ({ currentUser }) => {
         <h1 className='mb-5'>Contacts Register</h1>
         <Button className='m-2' variant="outline-primary" onClick={() => setPage('Table')}>Table</Button>
         <Button className='m-2' variant="outline-primary" onClick={() => setPage('Form')}>Add New</Button>
-        <Container className='my-2'>
-          <Row>
-            <Col>
-              { page === 'Table' ?
-                <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} setPage={setPage} /> :
-                <ContactsForm {...({ addOrEdit, currentID, contactsObj })} setPage={setPage} />
-              }
-            </Col>
-          </Row>
-        </Container>
+        { page === 'Table' ?
+          <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} setPage={setPage} /> :
+          <ContactsForm {...({ addOrEdit, currentID, contactsObj })} setPage={setPage} />
+        }
       </Jumbotron>
     </>
   )
