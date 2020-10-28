@@ -5,11 +5,16 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
 
   const [locatValue, setLocatValue] = useState('')
   const sixCityValue = countryWeatherValue.sort((a, b) => {
+    // 使用sort進行排序，排序的介質為當兩個geocode除以100以後比較大小
     return (a.geocode/100) > (b.geocode/100)})
+    // 使用filter過濾geocode < 1000的值，
+    // 由於這邊沒有return，使用的是原先的countryWeatherValue陣列
+    // 而不是經過sort的陣列，這邊過濾完才進行sort的
     .filter(arr => arr.geocode < 1000)
   const noneSixCity = countryWeatherValue.sort((a, b) => {
-    return (a.geocode/100) < (b.geocode/100)})
-    .filter(arr => arr.geocode > 1000)
+    return (a.geocode/100) > (b.geocode/100)})
+    // 過濾完後將陣列進行反轉，這樣就不需要在sort中改變比較方式
+    .filter(arr => arr.geocode > 1000).reverse()
 
   return (
     <>
