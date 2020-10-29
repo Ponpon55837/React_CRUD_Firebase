@@ -14,45 +14,15 @@ const LocationArrComponents = ({
   const locationSwitch = () => {
     switch(areaState){
       case '北部':
-      return (
-        <>
-          { locationArrNorth.map(arr =>
-            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
-          )}
-        </>
-      )
+      return LocationDropdownArray(locationArrNorth, twoFuncForWeather)
       case '中部':
-      return (
-        <>
-          { locationArrCenter.map(arr =>
-            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
-          )}
-        </>
-      )
+      return LocationDropdownArray(locationArrCenter, twoFuncForWeather)
       case '南部':
-      return (
-        <>
-          { locationArrSouth.map(arr =>
-            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
-          )}
-        </>
-      )
+      return LocationDropdownArray(locationArrSouth, twoFuncForWeather)
       case '東部':
-      return (
-        <>
-          { locationArrEast.map(arr =>
-            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
-          )}
-        </>
-      )
+      return LocationDropdownArray(locationArrEast, twoFuncForWeather)
       default:
-      return (
-        <>
-          { locationArrNorth.map(arr =>
-            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
-          )}
-        </>
-      )
+      return LocationDropdownArray(locationArrNorth, twoFuncForWeather)
     }
   }
 

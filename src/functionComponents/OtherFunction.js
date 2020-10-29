@@ -33,10 +33,13 @@ export const LocatListGroupButton = ({items, setLocatValue}) => {
   )
 }
 
-export const LocationDropdownArray = ({arr, twoFuncForWeather}) => {
+export const LocationDropdownArray = (locat, twoFuncForWeather) => {
   return (
     <>
-      <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+      {
+        locat.map(arr =>
+        <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>)
+      }
     </>
   )
 }
