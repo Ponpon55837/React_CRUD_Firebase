@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { randomKeyValue } from '../../functionComponents/OtherFunction'
 import { ListGroup, Button, Card, Col } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
@@ -41,7 +42,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
             <Col xs={12} sm={12} md={4} key={item.elementName}>
               {item.description}({item.elementName}):
               {item.time.pop().elementValue.map(ite =>
-                <p key={`${ite.value}+${ite.measures}`}>
+                <p key={`${ite.value}` + randomKeyValue()}>
                   {ite.value}{ite.measures}
                 </p>
               )}
