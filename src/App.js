@@ -7,6 +7,7 @@ import Profile from './pageComponents/Profile/ProfilePage'
 import PhotoProfile from './pageComponents/Photo/PhotoProfile'
 import WeatherProfile from './pageComponents/Weather/WeatherProfile'
 import SignIn from './pageComponents/SignIn/SignIn'
+import SignUp2 from './pageComponents/SignUp/SignUp2'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { projectAuth } from "./firebase/Config"
 import { bgStyle } from './style/style'
@@ -48,20 +49,20 @@ const App = () => {
       <div style={bgStyle}>
       <Navbar currentUser={currentUser} setPage={setPage} />
         <BrowserRouter>
-            <Switch>
-              <Route path='/contacts'>
-                <Contacts />
-              </Route>
-              <Route path='/photo'>
-                <PhotoProfile />
-              </Route>
-              <Route path='/weather'>
-                <WeatherProfile />
-              </Route>
-              <Route path='/'>
-                <Profile currentUser={currentUser} />
-              </Route>
-            </Switch>
+          <Switch>
+            <Route path='/contacts'>
+              <Contacts />
+            </Route>
+            <Route path='/photo'>
+              <PhotoProfile />
+            </Route>
+            <Route path='/weather'>
+              <WeatherProfile />
+            </Route>
+            <Route path='/'>
+              <Profile currentUser={currentUser} />
+            </Route>
+          </Switch>
         </BrowserRouter>
       <Footer />
       </div>
