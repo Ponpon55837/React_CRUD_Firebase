@@ -33,7 +33,7 @@ export const LocatListGroupButton = ({items, setLocatValue}) => {
   )
 }
 
-export const LocationDropdownArray = (locat, twoFuncForWeather) => {
+export const locationDropdownArray = (locat, twoFuncForWeather) => {
   return (
     <>
       {

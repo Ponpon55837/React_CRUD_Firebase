@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocationDropdownArray } from '../../functionComponents/OtherFunction'
+import { locationDropdownArray } from '../../functionComponents/OtherFunction'
 import { DropdownButton } from 'react-bootstrap'
 
 const LocationArrComponents = ({
@@ -14,15 +14,15 @@ const LocationArrComponents = ({
   const locationSwitch = () => {
     switch(areaState){
       case '北部':
-      return LocationDropdownArray(locationArrNorth, twoFuncForWeather)
+      return locationDropdownArray(locationArrNorth, twoFuncForWeather)
       case '中部':
-      return LocationDropdownArray(locationArrCenter, twoFuncForWeather)
+      return locationDropdownArray(locationArrCenter, twoFuncForWeather)
       case '南部':
-      return LocationDropdownArray(locationArrSouth, twoFuncForWeather)
+      return locationDropdownArray(locationArrSouth, twoFuncForWeather)
       case '東部':
-      return LocationDropdownArray(locationArrEast, twoFuncForWeather)
+      return locationDropdownArray(locationArrEast, twoFuncForWeather)
       default:
-      return LocationDropdownArray(locationArrNorth, twoFuncForWeather)
+      return locationDropdownArray(locationArrNorth, twoFuncForWeather)
     }
   }
 
