@@ -1,5 +1,6 @@
 import React from 'react'
-import { DropdownButton, Dropdown } from 'react-bootstrap'
+import { LocationDropdownArray } from '../../functionComponents/OtherFunction'
+import { DropdownButton } from 'react-bootstrap'
 
 const LocationArrComponents = ({
   currentWeather,
@@ -16,7 +17,7 @@ const LocationArrComponents = ({
       return (
         <>
           { locationArrNorth.map(arr =>
-            <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
           )}
         </>
       )
@@ -24,7 +25,7 @@ const LocationArrComponents = ({
       return (
         <>
           { locationArrCenter.map(arr =>
-            <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
           )}
         </>
       )
@@ -32,15 +33,15 @@ const LocationArrComponents = ({
       return (
         <>
           { locationArrSouth.map(arr =>
-            <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
           )}
         </>
       )
       case '東部':
       return (
         <>
-          { '東部' && locationArrEast.map(arr =>
-            <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+          { locationArrEast.map(arr =>
+            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
           )}
         </>
       )
@@ -48,7 +49,7 @@ const LocationArrComponents = ({
       return (
         <>
           { locationArrNorth.map(arr =>
-            <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+            <LocationDropdownArray arr={arr} twoFuncForWeather={twoFuncForWeather}/>
           )}
         </>
       )

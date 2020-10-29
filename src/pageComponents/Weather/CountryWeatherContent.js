@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { randomKeyValue } from '../../functionComponents/OtherFunction'
-import { ListGroup, Button, Card, Col } from 'react-bootstrap'
+import { randomKeyValue, LocatListGroupButton } from '../../functionComponents/OtherFunction'
+import { ListGroup, Card, Col } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
@@ -22,12 +22,12 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
       <ListGroup className='mb-3'>
         <ListGroup.Item>
           {sixCityValue.map(items =>
-            <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+            <LocatListGroupButton items={items} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
         <ListGroup.Item>
           {noneSixCity.map(items =>
-            <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+            <LocatListGroupButton items={items} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
       </ListGroup>

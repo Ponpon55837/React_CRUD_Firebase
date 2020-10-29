@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
+import { Button, Dropdown } from 'react-bootstrap'
 
 // setInterval in react hooks to use
 export const useInterval = (callback, delay) => {
@@ -22,4 +23,20 @@ export const useInterval = (callback, delay) => {
 // random key id generate
 export const randomKeyValue = () => {
   return Math.random().toString(36).substr(2,10) + Date.now().toString(36).substr(4,10)
+}
+
+export const LocatListGroupButton = ({items, setLocatValue}) => {
+  return (
+    <>
+      <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+    </>
+  )
+}
+
+export const LocationDropdownArray = ({arr, twoFuncForWeather}) => {
+  return (
+    <>
+      <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>
+    </>
+  )
 }
