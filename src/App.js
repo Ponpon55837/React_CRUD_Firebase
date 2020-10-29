@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
@@ -13,8 +13,13 @@ import { bgStyle } from './style/style'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container } from 'react-bootstrap'
 
+const AuthContext = React.createContext()
+export const useAuth = () => {
+  return useContext(AuthContext)
+}
+
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState()
   // console.log(currentUser)
   const [page, setPage] = useState('NotLogIn')
 
@@ -26,18 +31,21 @@ const App = () => {
 
   if(!currentUser) {
     return (
-      <div style={bgStyle}>
+      <AuthContext.Provider value={currentUser} >
+        <div style={bgStyle}>
         <Navbar currentUser={currentUser} setPage={setPage} />
         <Container className='mt-3'>
           { page === 'NotLogIn' ? <NotLogIn /> : <SignIn /> }
         </Container>
         <Footer />
-      </div>
+        </div>
+      </AuthContext.Provider>
     )
   }
 
   return (
-    <div style={bgStyle}>
+    <AuthContext.Provider value={currentUser}>
+      <div style={bgStyle}>
       <Navbar currentUser={currentUser} setPage={setPage} />
         <BrowserRouter>
             <Switch>
@@ -56,7 +64,8 @@ const App = () => {
             </Switch>
         </BrowserRouter>
       <Footer />
-    </div>
+      </div>
+    </AuthContext.Provider>
   )
 }
 
