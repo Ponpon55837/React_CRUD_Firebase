@@ -39,7 +39,7 @@ const WeatherProfile = () => {
   }
 
   const weatherHandler = async () => {
-    return await fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=${currentWeather.locationName}`)
+    await fetch(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=${process.env.REACT_APP_WEATHER_AUTH}&locationName=${currentWeather.locationName}`)
     .then((response) => response.json())
     .then((weatherData) => {
       console.log('records', weatherData.records.location[0])
@@ -67,7 +67,7 @@ const WeatherProfile = () => {
   }
 
   const countryWeaherHandelr = async () => {
-    return await fetch(`https://opendata.cwb.gov.tw/api//v1/rest/datastore/F-D0047-089?Authorization=${process.env.REACT_APP_WEATHER_AUTH}`)
+    await fetch(`https://opendata.cwb.gov.tw/api//v1/rest/datastore/F-D0047-089?Authorization=${process.env.REACT_APP_WEATHER_AUTH}`)
     .then((res) => res.json())
     .then((countryData) => {
       const countryLocat = countryData.records.locations[0].location
