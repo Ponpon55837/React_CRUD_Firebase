@@ -47,7 +47,7 @@ const App = () => {
   return (
     <AuthContext.Provider value={currentUser}>
       <div style={bgStyle}>
-      <Navbar currentUser={currentUser} setPage={setPage} />
+        <Navbar currentUser={currentUser} setPage={setPage} />
         <BrowserRouter>
           <Switch>
             <Route path='/contacts'>
@@ -64,7 +64,7 @@ const App = () => {
             </Route>
           </Switch>
         </BrowserRouter>
-      <Footer />
+        <Footer />
       </div>
     </AuthContext.Provider>
   )
