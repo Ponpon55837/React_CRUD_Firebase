@@ -16,7 +16,7 @@ export const mainStyle = {
   width: '100%',
   transition:'all 0.5s',
   zIndex: '1',
-  opacity: '0.7'
+  // opacity: '0.7'
 }
 
 export const footerStyle = {

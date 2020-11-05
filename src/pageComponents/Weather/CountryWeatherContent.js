@@ -21,13 +21,13 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
     <>
       <ListGroup className='mb-3'>
         <ListGroup.Item>
-          {sixCityValue.map(items =>
-            <LocatListGroupButton items={items} setLocatValue={setLocatValue} />
+          {sixCityValue.map((items, i) =>
+            <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
         <ListGroup.Item>
-          {noneSixCity.map(items =>
-            <LocatListGroupButton items={items} setLocatValue={setLocatValue} />
+          {noneSixCity.map((items, i) =>
+            <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
       </ListGroup>
