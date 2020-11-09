@@ -44,8 +44,8 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
               {item.time.pop().elementValue.map(ite =>
                 <Badge
                   className='m-1' variant="secondary" key={`${ite.value}` + randomKeyValue()}>
-                  {ite.value}{ite.measures}
-                  {console.log(ite.measures.length)}
+                  {ite.value.length > 10 ? ite.value.slice(0,9) : ite.value}
+                  {ite.measures.replace('NA', '').replace('自定義', '').replace('文字', '').replace('單位', '').replace('Wx', '')}
                 </Badge>
               )}
             </Col>
