@@ -16,7 +16,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
     return (a.geocode/100) > (b.geocode/100)})
     // 過濾完後將陣列進行反轉，這樣就不需要在sort中改變比較方式
     .filter(arr => arr.geocode > 1000).reverse()
-
+    // 使用pop函式調整最後一列值
   return (
     <>
       <ListGroup className='mb-3'>
