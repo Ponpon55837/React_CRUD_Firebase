@@ -4,6 +4,7 @@ import { ListGroup, Card, Col, Badge, Button } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
+  const [cityBtn, setCityBtn] = useState('')
   const [locatValue, setLocatValue] = useState('')
   const sixCityValue = countryWeatherValue.sort((a, b) => {
     // 使用sort進行排序，排序的介質為當兩個geocode除以100以後比較大小
@@ -19,13 +20,15 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
     // 使用pop函式調整最後一列值
   return (
     <>
+      <Button className='m-2' variant='info' disabled={cityBtn === '六都'} onClick={() => setCityBtn('六都')}>六都</Button>
+      <Button className='m-2' variant='info' disabled={cityBtn === '其它縣市'} onClick={() => setCityBtn('其它縣市')}>其它縣市</Button>
       <ListGroup className='mb-3'>
-        <ListGroup.Item>
+        <ListGroup.Item hidden={cityBtn !== '六都'}>
           {sixCityValue.map((items, i) =>
             <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
-        <ListGroup.Item>
+        <ListGroup.Item className='mb-3' hidden={cityBtn !== '其它縣市'}>
           {noneSixCity.map((items, i) =>
             <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
           )}
