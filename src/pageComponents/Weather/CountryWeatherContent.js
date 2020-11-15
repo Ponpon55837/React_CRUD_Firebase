@@ -6,6 +6,12 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
 
   const [cityBtn, setCityBtn] = useState('')
   const [locatValue, setLocatValue] = useState('')
+  // 用來一次控制兩個button輸入值時，進行State的改變
+  const twoFuncForCityBtn = (city, locatValue) => {
+    setCityBtn(city)
+    setLocatValue(locatValue)
+  }
+  // 新設陣列進行變換，這樣才不會污染舊的陣列
   const sixCityValue = countryWeatherValue.sort((a, b) => {
     // 使用sort進行排序，排序的介質為當兩個geocode除以100以後比較大小
     return (a.geocode/100) > (b.geocode/100)})
@@ -20,15 +26,19 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
     // 使用pop函式調整最後一列值
   return (
     <>
-      <Button className='m-2' variant='info' disabled={cityBtn === '六都'} onClick={() => setCityBtn('六都')}>六都</Button>
-      <Button className='m-2' variant='info' disabled={cityBtn === '其它縣市'} onClick={() => setCityBtn('其它縣市')}>其它縣市</Button>
-      <ListGroup className='mb-3'>
-        <ListGroup.Item hidden={cityBtn !== '六都'}>
+      <div className='mb-2'>
+        <Button className='m-2' variant='info' disabled={cityBtn === '六都'} onClick={() => twoFuncForCityBtn('六都', '')}>六都</Button>
+        <Button className='m-2' variant='info' disabled={cityBtn === '其它縣市'} onClick={() => twoFuncForCityBtn('其它縣市', '')}>其它縣市</Button>
+      </div>
+      <ListGroup className='mb-3' hidden={cityBtn !== '六都'}>
+        <ListGroup.Item>
           {sixCityValue.map((items, i) =>
             <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
-        <ListGroup.Item className='mb-3' hidden={cityBtn !== '其它縣市'}>
+      </ListGroup>
+      <ListGroup className='mb-3' hidden={cityBtn !== '其它縣市'}>
+        <ListGroup.Item>
           {noneSixCity.map((items, i) =>
             <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
           )}
