@@ -6,6 +6,8 @@ import UserContentDisplay from './UserContentDisplay'
 import UserContentModify from './UserContentModify'
 import { Jumbotron, Container, Row, Col, Button, Image } from 'react-bootstrap'
 
+const colStyle= { borderRadius: '30px'}
+
 const Profile = ({ currentUser }) => {
   const [page, setPage] = useState('display')
   const [snapData, setSnapData] = useState([])
@@ -37,7 +39,7 @@ const Profile = ({ currentUser }) => {
       <Container className='my-4'>
         <Row>
           <Col className='d-none d-sm-none d-md-block' md={12} lg={6} xl={6}>
-            <Image className='my-2' src={snapData.photoURL} rounded />
+            <Image className='my-2' src={snapData.photoURL} style={colStyle}/>
           </Col>
         {
           page === 'display'
