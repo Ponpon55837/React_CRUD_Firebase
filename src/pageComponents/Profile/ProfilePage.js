@@ -31,9 +31,11 @@ const Profile = ({ currentUser }) => {
     <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12} className='m-4'>
       <h1 className='mb-5'>Welcome Back {currentUser.displayName}</h1>
       <Button className='m-2' variant="outline-primary"
+        style={{border: 'none'}}
         disabled={page === 'display'}
         onClick={() => setPage('display')}>Display</Button>
       <Button className='m-2' variant="outline-primary"
+        style={{border: 'none'}}
         disabled={page === 'modify'}
         onClick={() => setPage('modify')}>Modify</Button>
       <Container className='my-4'>

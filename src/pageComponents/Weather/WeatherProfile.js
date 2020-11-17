@@ -84,11 +84,13 @@ const WeatherProfile = () => {
     <Jumbotron style={jumbotronStyle} className='m-4'>
       <h1 className='mb-5'>This is Weather Part</h1>
       <Button className='m-2' variant="outline-primary"
+        style={{border: 'none'}}
         disabled={weatherPage === 'preWeather'}
         onClick={() =>    setWeatherPage('preWeather')}>
           PreWeather
       </Button>
       <Button className='m-2' variant="outline-primary"
+        style={{border: 'none'}}
         disabled={weatherPage === 'countryWeather'}
         onClick={() => setWeatherPage('countryWeather')}>
           CountryWeather

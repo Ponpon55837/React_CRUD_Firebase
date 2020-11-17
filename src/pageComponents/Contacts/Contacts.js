@@ -75,9 +75,11 @@ const Contacts = ({ currentUser }) => {
       <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12} className='m-4'>
         <h1 className='mb-5'>Contacts Register</h1>
         <Button className='m-2' variant="outline-primary"
+          style={{border: 'none'}}
           disabled={page === 'Table'}
           onClick={() => setPage('Table')}>Table</Button>
         <Button className='m-2' variant="outline-primary"
+          style={{border: 'none'}}
           disabled={page === 'Form'}
           onClick={() => setPage('Form')}>{ currentID === '' ? 'Add New' : 'Edit This'}</Button>
         { page === 'Table' ?
