@@ -30,12 +30,12 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
   return (
     <Container>
       <Row>
-          <DropdownButton className='m-2' variant='light' title={`地區：${areaState}`}>
-            { areaArr.map(arr =>
-              <Dropdown.Item key={arr.areaid} href="#" onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
-            )}
-          </DropdownButton>
-          <LocationArrComponents currentWeather={currentWeather} areaState={areaState} locationArrNorth={locationArrNorth} locationArrCenter={locationArrCenter} locationArrSouth={locationArrSouth} locationArrEast={locationArrEast} twoFuncForWeather={twoFuncForWeather} />
+        <DropdownButton className='m-2' variant='light' title={`地區：${areaState}`}>
+          { areaArr.map(arr =>
+            <Dropdown.Item key={arr.areaid} href="#" onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
+          )}
+        </DropdownButton>
+        <LocationArrComponents currentWeather={currentWeather} areaState={areaState} locationArrNorth={locationArrNorth} locationArrCenter={locationArrCenter} locationArrSouth={locationArrSouth} locationArrEast={locationArrEast} twoFuncForWeather={twoFuncForWeather} />
         { btnState ?
           <Button className='m-2' variant='info' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
         }
