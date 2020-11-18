@@ -53,7 +53,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
           </Card.Header>
           <Card.Body>
           {items.weatherElement.map(item =>
-            <Col className='mb-2' key={item.elementName}>
+            <Col className='mb-2 d-flex justify-content-xl-center justify-content-lg-center' key={item.elementName}>
               {item.description}({item.elementName}):
               {item.time.pop().elementValue.map(ite =>
                 <Badge
