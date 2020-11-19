@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { randomKeyValue, LocatListGroupButton } from '../../functionComponents/OtherFunction'
-import { ListGroup, ListGroupItem, Card, Col, Badge, Button } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, Card, Badge, Button } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
