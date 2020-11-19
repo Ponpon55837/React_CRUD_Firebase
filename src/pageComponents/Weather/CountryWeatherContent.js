@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { randomKeyValue, LocatListGroupButton } from '../../functionComponents/OtherFunction'
-import { ListGroup, Card, Col, Badge, Button } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, Card, Col, Badge, Button } from 'react-bootstrap'
 
 const CountryWeatherContent = ({ countryWeatherValue }) => {
 
@@ -51,20 +51,19 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
             <Button variant="link" size='sm' className='mx-2' onClick={() => setLocatValue('')}>🅧</Button>
             <strong className="mr-auto">{items.locationName}</strong>
           </Card.Header>
-          <Card.Body>
+          <ListGroup>
           {items.weatherElement.map(item =>
-            <Col className='mb-2 d-flex justify-content-xl-center justify-content-lg-center' key={item.elementName}>
+            <ListGroupItem className='d-flex justify-content-xl-center justify-content-lg-center' key={item.elementName}>
               {item.description}({item.elementName}):
               {item.time.pop().elementValue.map(ite =>
-                <Badge
-                  className='m-1' variant="secondary" key={`${ite.value}` + randomKeyValue()}>
+                <Badge variant="secondary" key={`${ite.value}` + randomKeyValue()}>
                   {ite.value.length > 10 ? ite.value.slice(0,9) : ite.value}
                   {ite.measures.replace('NA', '').replace('自定義', '').replace('文字', '').replace('單位', '').replace('Wx', '')}
                 </Badge>
               )}
-            </Col>
+            </ListGroupItem>
           )}
-          </Card.Body>
+          </ListGroup>
         </Card> : ''
       )}
     </>
