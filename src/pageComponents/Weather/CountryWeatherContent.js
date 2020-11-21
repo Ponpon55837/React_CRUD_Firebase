@@ -56,7 +56,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
             <ListGroupItem className='d-flex justify-content-xl-center justify-content-lg-center' key={item.elementName}>
               {item.description}({item.elementName}):
               {item.time.pop().elementValue.map( (ite, index) =>
-                <Badge variant="secondary" key={index + randomKeyValue()}>
+                <Badge variant="secondary" className='mr-1' key={index + randomKeyValue()}>
                   {ite.value.length > 10 ? ite.value.slice(0,9) : ite.value}
                   {ite.measures.replace('NA', '').replace('自定義', '').replace('文字', '').replace('單位', '').replace('Wx', '')}
                 </Badge>
