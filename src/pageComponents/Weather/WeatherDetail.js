@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
@@ -9,6 +9,18 @@ import { ReactComponent as DayFOGIcon } from './images/day-fog.svg'
 import { ReactComponent as ClearWithRainIcon } from './images/day-partially-clear-with-rain.svg'
 
 const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain, styleSvg }) => {
+
+  const initialState = {
+    top: 0,
+    ledt: 0
+ }
+  const [mouseMoveState, setMouseMoveState] = useState(initialState)
+  const mouseMouveHandler = (inputValue) => {
+    let xAxis = (window.innerWidth / 2 - inputValue.pageX) / 25
+    let yAxis = (window.innerHeight / 2 - inputValue.pageY) / 25
+    setMouseMoveState({left: xAxis, top: yAxis})
+    console.log('gogo')
+  }
 
   const descriSwitch = () => {
     switch(currentWeather.description) {
@@ -43,7 +55,10 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
       </Row>
       <Row>
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
-          <div className='mr-2'>{Math.round(currentWeather.temperature)}°C</div>
+          <div className='mr-2'
+            style={{left:mouseMoveState.left , top: mouseMoveState.top}}
+            onMouseEnter={(inputValue)=> mouseMouveHandler(inputValue)}>
+          {Math.round(currentWeather.temperature)}°C</div>
           {descriSwitch()}
         </Col>
         <Col xs={12} md={6} lg={4} xl={4} style={airFlow}>
