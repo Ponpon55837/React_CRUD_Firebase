@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { ReactComponent as AirFlowIcon } from './images/airFlow.svg'
 import { ReactComponent as RainIcon } from './images/rain.svg'
@@ -16,7 +16,6 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
     e.preventDefault()
     let xAxis = (window.innerWidth / 2 - e.pageX) / 25
     let yAxis = (window.innerHeight / 2 - e.pageY) / 25
-    // card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`
     setMouseMoveState(`rotateY(${xAxis}deg) rotateX(${yAxis}deg)`)
     console.log(mouseMoveState)
   }
