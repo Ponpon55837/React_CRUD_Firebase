@@ -55,7 +55,7 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'
             onMouseOver={mouseStateHandler}
-            style={{transform:`${mouseMoveState}`}}>
+            style={{transform:`${mouseMoveState}`, transformStyle: 'preserve-3d'}}>
             {Math.round(currentWeather.temperature)}°C
           </div>
           {descriSwitch()}
