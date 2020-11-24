@@ -19,7 +19,7 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
 
   const mouseMoveHandler = (e) => {
     e.preventDefault()
-    let xAxis = (window.innerWidth / 2 - e.pageX) / 10
+    let xAxis = (window.innerWidth / 2 - e.pageX) / 8
     let yAxis = (window.innerHeight / 2 - e.pageY) / 10
     setMouseMoveState({
       ...initialStyle,
