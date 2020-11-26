@@ -19,8 +19,8 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
 
   const mouseMoveHandler = (e) => {
     e.preventDefault()
-    let xAxis = (window.innerWidth / 2 - e.pageX) / 5
-    let yAxis = (window.innerHeight / 2 - e.pageY) / 5
+    let xAxis = (window.innerWidth / 2 - e.pageX) / 25
+    let yAxis = (window.innerHeight / 2 - e.pageY) / 3
     setMouseMoveState({
       ...initialStyle,
       transform:`rotateY(${xAxis}deg) rotateX(${yAxis}deg)`
@@ -40,7 +40,7 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
     setMouseMoveState({
       ...initialStyle,
       transform: `rotateY(0deg) rotateX(0deg)`,
-      transition: "all 0.5s ease"
+      transition: "all 0.5s ease out"
     })
   }
 
@@ -75,16 +75,16 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
         </Col>
         <Col className='mb-2' sm={12} md={12}>{currentWeather.observationTime}</Col>
       </Row>
-      <Row>
+      <Row
+        onMouseMove={mouseMoveHandler}
+        onMouseEnter={mouseEnterHandler}
+        onMouseLeave={mouseLeaveHandler}
+        style={mouseMoveState}>
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'>
             {Math.round(currentWeather.temperature)}°C
           </div>
-          <div
-            onMouseMove={mouseMoveHandler}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            style={mouseMoveState}>
+          <div>
             {descriSwitch()}
           </div>
         </Col>
@@ -92,11 +92,7 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
           <div className='mr-2'>
             {currentWeather.windSpeed} m/h
           </div>
-          <div
-            onMouseMove={mouseMoveHandler}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            style={mouseMoveState}>
+          <div>
             <AirFlowIcon style={styleSvg} />
           </div>
         </Col>
@@ -104,11 +100,7 @@ const WeatherDetail = ({ currentWeather, description, temperature, airFlow, rain
           <div className='mr-2'>
             {(currentWeather.humid * 100).toFixed(2)}%
           </div>
-          <div
-            onMouseMove={mouseMoveHandler}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            style={mouseMoveState}>
+          <div>
             <RainIcon style={styleSvg} />
           </div>
         </Col>
