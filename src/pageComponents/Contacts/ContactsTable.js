@@ -1,5 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
+import IosHammerOutline from 'react-ionicons/lib/IosHammerOutline'
+import IosTrashOutline from 'react-ionicons/lib/IosTrashOutline'
 
 const ContactsTable = ({ contactsObj, setCurrentId, deleteId, setPage }) => {
 
@@ -27,8 +29,8 @@ const ContactsTable = ({ contactsObj, setCurrentId, deleteId, setPage }) => {
               <td>{contactsObj[id].mobile}</td>
               <td>{contactsObj[id].email}</td>
               <td>
-                <Button className='btn-primary m-1' onClick={() => callBackTwoFunct(id)}>Edit</Button>
-                <Button className='btn-danger m-1' onClick={() => deleteId(id)}>Delete</Button>
+                <Button className='btn m-1' variant="outline-primary" onClick={() => callBackTwoFunct(id)}><IosHammerOutline fontSize='20px' /></Button>
+                <Button className='btn m-1' variant="outline-danger" onClick={() => deleteId(id)}><IosTrashOutline fontSize='20px' /></Button>
               </td>
             </tr>
           ))

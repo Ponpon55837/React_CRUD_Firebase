@@ -4,6 +4,8 @@ import { jumbotronStyle } from '../../style/style'
 import { projectFirestore } from '../../firebase/Config'
 import UserContentDisplay from './UserContentDisplay'
 import UserContentModify from './UserContentModify'
+import IosAddCircleOutline from 'react-ionicons/lib/IosAddCircleOutline'
+import IosArrowDropleft from 'react-ionicons/lib/IosArrowDropleft'
 import { Jumbotron, Container, Row, Col, Button, Image } from 'react-bootstrap'
 
 const colStyle= { borderRadius: '30px'}
@@ -30,14 +32,18 @@ const Profile = ({ currentUser }) => {
   return (
     <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12} className='m-4'>
       <h1 className='mb-5'>Welcome Back {currentUser.displayName}</h1>
-      <Button className='m-2' variant="outline-primary"
+      <Button className='m-2' variant="outline-info"
         style={{border: 'none'}}
         disabled={page === 'display'}
-        onClick={() => setPage('display')}>Display</Button>
-      <Button className='m-2' variant="outline-primary"
+        onClick={() => setPage('display')}>
+        <IosArrowDropleft fontSize="30px" />
+      </Button>
+      <Button className='m-2' variant="outline-info"
         style={{border: 'none'}}
         disabled={page === 'modify'}
-        onClick={() => setPage('modify')}>Modify</Button>
+        onClick={() => setPage('modify')}>
+        <IosAddCircleOutline fontSize="30px" />
+      </Button>
       <Container className='my-4'>
         <Row>
           <Col className='d-none d-sm-none d-md-block' md={12} lg={6} xl={6}>

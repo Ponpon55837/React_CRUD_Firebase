@@ -3,6 +3,9 @@ import ContactsForm from './ContactsForm'
 import ContactsTable from './ContactsTable'
 import { projectDB } from '../../firebase/Config'
 import { jumbotronStyle } from '../../style/style.js'
+import MdKeypad from 'react-ionicons/lib/MdKeypad'
+import IosAddCircleOutline from 'react-ionicons/lib/IosAddCircleOutline'
+import IosHammerOutline from 'react-ionicons/lib/IosHammerOutline'
 import { Jumbotron, Button } from 'react-bootstrap'
 
 const Contacts = ({ currentUser }) => {
@@ -74,14 +77,21 @@ const Contacts = ({ currentUser }) => {
     <>
       <Jumbotron style={jumbotronStyle} md={12} lg={12} xl={12} className='m-4'>
         <h1 className='mb-5'>Contacts Register</h1>
-        <Button className='m-2' variant="outline-primary"
+        <Button className='m-2' variant="outline-info"
           style={{border: 'none'}}
           disabled={page === 'Table'}
-          onClick={() => setPage('Table')}>Table</Button>
-        <Button className='m-2' variant="outline-primary"
+          onClick={() => setPage('Table')}>
+          <MdKeypad fontSize='30px' />
+        </Button>
+        <Button className='m-2' variant="outline-info"
           style={{border: 'none'}}
           disabled={page === 'Form'}
-          onClick={() => setPage('Form')}>{ currentID === '' ? 'Add New' : 'Edit This'}</Button>
+          onClick={() => setPage('Form')}>
+          { currentID === '' ?
+            <IosAddCircleOutline fontSize='30px' /> :
+            <IosHammerOutline fontSize='30px' />
+          }
+        </Button>
         { page === 'Table' ?
           <ContactsTable contactsObj={contactsObj} setCurrentId={setCurrentId} deleteId={deleteId} setPage={setPage} /> :
           <>
