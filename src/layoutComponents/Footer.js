@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import LogoGithub from 'react-ionicons/lib/LogoGithub'
 import { footerStyle } from '../style/style.js'
 
 const Footer = () => {
 
+  const [fontValue, setFontValue] = useState('40px')
+  const mouseEnterHandler = () => {
+    setFontValue('50px')
+  }
+  const mouseOverHandler = () => {
+    setFontValue('50px')
+  }
+  const mouseLeaveHandler = () => {
+    setFontValue('40px')
+  }
+
   return (
     <footer style={footerStyle} className='py-5 mt-5'>
-      make by upfloor at 2020
+      <a
+        href='https://github.com/Ponpon55837'
+        target='_blank'
+        title='My Github Profile'
+        onMouseEnter={mouseEnterHandler}
+        onMouseOver={mouseOverHandler}
+        onMouseLeave={mouseLeaveHandler}>
+        <LogoGithub
+          fontSize={fontValue}
+          color="#ffffff" />
+        </a>
     </footer>
   )
 }
