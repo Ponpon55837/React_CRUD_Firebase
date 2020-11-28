@@ -19,7 +19,6 @@ const Footer = () => {
     <footer style={footerStyle} className='py-5 mt-5'>
       <a
         href='https://github.com/Ponpon55837'
-        target='_blank'
         title='My Github Profile'
         onMouseEnter={mouseEnterHandler}
         onMouseOver={mouseOverHandler}
