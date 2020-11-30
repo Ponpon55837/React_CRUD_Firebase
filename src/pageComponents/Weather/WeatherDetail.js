@@ -8,7 +8,7 @@ import { ReactComponent as CloudyFOGIcon } from './images/day-cloudy-fog.svg'
 import { ReactComponent as DayFOGIcon } from './images/day-fog.svg'
 import { ReactComponent as ClearWithRainIcon } from './images/day-partially-clear-with-rain.svg'
 
-const WeatherDetail = ({ currentWeather, setCurrentWeather, setAreaState, description, temperature, airFlow, rain, styleSvg }) => {
+const WeatherDetail = ({ initialValues, currentWeather, setCurrentWeather, description, temperature, airFlow, rain, styleSvg }) => {
 
   const initialStyle = {
     transform: '',
@@ -69,19 +69,18 @@ const WeatherDetail = ({ currentWeather, setCurrentWeather, setAreaState, descri
 
   useEffect(() => {
     if(currentWeather.locationName === '南沙島') {
-      setAreaState('')
-      setCurrentWeather({...currentWeather, locationName: ''})
+      setCurrentWeather({...initialValues, locationName: ''})
       alert('請選擇城市')
     }
-  },[currentWeather, setAreaState, setCurrentWeather])
+  },[initialValues, currentWeather, setCurrentWeather])
 
   return (
     <>
       <Row>
         <Col sm={12} md={12} style={description}>
-          { currentWeather.locationName !== '' && currentWeather.description }
+          {currentWeather.description}
         </Col>
-        <Col className='mb-2' sm={12} md={12}>{currentWeather.locationName !== '' && currentWeather.observationTime}</Col>
+        <Col className='mb-2' sm={12} md={12}>{currentWeather.observationTime}</Col>
       </Row>
       <Row
         onMouseMove={mouseMoveHandler}
@@ -90,10 +89,10 @@ const WeatherDetail = ({ currentWeather, setCurrentWeather, setAreaState, descri
         style={mouseMoveState}>
         <Col xs={12} md={6} lg={4} xl={4} style={temperature}>
           <div className='mr-2'>
-            {currentWeather.locationName !== '' && Math.round(currentWeather.temperature)}°C
+            {Math.round(currentWeather.temperature)}°C
           </div>
           <div>
-            { currentWeather.locationName !== '' && descriSwitch()}
+            {descriSwitch()}
           </div>
         </Col>
         <Col xs={12} md={6} lg={4} xl={4} style={airFlow}>
@@ -101,15 +100,15 @@ const WeatherDetail = ({ currentWeather, setCurrentWeather, setAreaState, descri
             {currentWeather.windSpeed} m/h
           </div>
           <div>
-            { currentWeather.locationName !== '' && <AirFlowIcon style={styleSvg} /> }
+            <AirFlowIcon style={styleSvg} />
           </div>
         </Col>
         <Col xs={12} md={6} lg={4} xl={4} style={rain}>
           <div className='mr-2'>
-            {currentWeather.locationName !== '' && (currentWeather.humid * 100).toFixed(2)}%
+            {(currentWeather.humid * 100).toFixed(2)}%
           </div>
           <div>
-            {currentWeather.locationName !== '' && <RainIcon style={styleSvg} />}
+            <RainIcon style={styleSvg} />
           </div>
         </Col>
       </Row>

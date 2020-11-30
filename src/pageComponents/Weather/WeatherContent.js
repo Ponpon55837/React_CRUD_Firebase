@@ -7,7 +7,7 @@ import WeatherDetail from './WeatherDetail'
 import { Container, Row, Col, Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
-const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) => {
+const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weatherHandler }) => {
 
   const [btnState, setBtnState] = useState(false)
   const [areaState, setAreaState] = useState('北部')
@@ -43,7 +43,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
           <Button variant="light" onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
-      <WeatherDetail currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} setAreaState={setAreaState} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
+      <WeatherDetail initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
       <ValueConmponents currentWeather={currentWeather} textStyle={textStyle} />
     </Container>
   )

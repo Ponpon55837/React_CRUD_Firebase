@@ -25,7 +25,7 @@ const WeatherProfile = () => {
     switch(weatherPage) {
       case 'preWeather':
       return (
-        <WeatherContent currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
+        <WeatherContent initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
       )
       case 'countryWeather':
       return (
@@ -33,7 +33,7 @@ const WeatherProfile = () => {
       )
       default:
       return (
-        <WeatherContent currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
+        <WeatherContent initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} weatherHandler={weatherHandler} />
       )
     }
   }
