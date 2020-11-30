@@ -43,7 +43,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, weatherHandler }) =
           <Button variant="light" onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
-      <WeatherDetail currentWeather={currentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
+      <WeatherDetail currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} setAreaState={setAreaState} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
       <ValueConmponents currentWeather={currentWeather} textStyle={textStyle} />
     </Container>
   )
