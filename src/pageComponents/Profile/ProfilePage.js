@@ -35,13 +35,15 @@ const Profile = ({ currentUser }) => {
       <Button className='m-2' variant="outline-info"
         style={{border: 'none'}}
         disabled={page === 'display'}
-        onClick={() => setPage('display')}>
+        onClick={() => setPage('display')}
+        title='Back to Profile'>
         <IosArrowDropleft fontSize="30px" />
       </Button>
       <Button className='m-2' variant="outline-info"
         style={{border: 'none'}}
         disabled={page === 'modify'}
-        onClick={() => setPage('modify')}>
+        onClick={() => setPage('modify')}
+        title='Edit Profile'>
         <IosAddCircleOutline fontSize="30px" />
       </Button>
       <Container className='my-4'>

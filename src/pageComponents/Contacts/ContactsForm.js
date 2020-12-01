@@ -79,7 +79,10 @@ const ContactsForm = ({ addOrEdit, currentID, contactsObj, setPage }) => {
           value={values.address}
           onChange={handlerInputChange} />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button
+        variant="primary" 
+        type="submit"
+        title={currentID === '' ? 'Submit' : 'Update'}>
         {currentID === '' ? 'Submit' : 'Update'}
       </Button>
     </Form>

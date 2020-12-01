@@ -32,15 +32,15 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
       <Row>
         <DropdownButton className='m-2' variant='light' title={`地區：${areaState}`}>
           { areaArr.map(arr =>
-            <Dropdown.Item key={arr.areaid} href="#" onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
+            <Dropdown.Item key={arr.areaid} href="#" title={arr.area} onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
           )}
         </DropdownButton>
         <LocationArrComponents currentWeather={currentWeather} areaState={areaState} locationArrNorth={locationArrNorth} locationArrCenter={locationArrCenter} locationArrSouth={locationArrSouth} locationArrEast={locationArrEast} twoFuncForWeather={twoFuncForWeather} />
         { btnState ?
-          <Button className='m-2' variant='info' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
+          <Button className='m-2' variant='info' title='Submit' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
         }
         <Col className='m-2' xs={4} sm={2} md={1}>
-          <Button variant="light" onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
+          <Button variant="light" title='Refresh' onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
       <WeatherDetail initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />

@@ -29,8 +29,8 @@ const ContactsTable = ({ contactsObj, setCurrentId, deleteId, setPage }) => {
               <td>{contactsObj[id].mobile}</td>
               <td>{contactsObj[id].email}</td>
               <td>
-                <Button className='btn m-1' variant="outline-primary" onClick={() => callBackTwoFunct(id)}><IosHammerOutline fontSize='20px' /></Button>
-                <Button className='btn m-1' variant="outline-danger" onClick={() => deleteId(id)}><IosTrashOutline fontSize='20px' /></Button>
+                <Button className='btn m-1' variant="outline-primary" title='Edit' onClick={() => callBackTwoFunct(id)}><IosHammerOutline fontSize='20px' /></Button>
+                <Button className='btn m-1' variant="outline-danger" title='delete' onClick={() => deleteId(id)}><IosTrashOutline fontSize='20px' /></Button>
               </td>
             </tr>
           ))

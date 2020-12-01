@@ -27,8 +27,8 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
   return (
     <>
       <div className='mb-2'>
-        <Button className='m-2' variant='info' disabled={cityBtn === '六都'} onClick={() => twoFuncForCityBtn('六都', '')}>六都</Button>
-        <Button className='m-2' variant='info' disabled={cityBtn === '其它縣市'} onClick={() => twoFuncForCityBtn('其它縣市', '')}>其它縣市</Button>
+        <Button className='m-2' variant='info' title='六都' disabled={cityBtn === '六都'} onClick={() => twoFuncForCityBtn('六都', '')}>六都</Button>
+        <Button className='m-2' variant='info' title='其它縣市' disabled={cityBtn === '其它縣市'} onClick={() => twoFuncForCityBtn('其它縣市', '')}>其它縣市</Button>
       </div>
       <ListGroup className='mb-3' hidden={cityBtn !== '六都'}>
         <ListGroup.Item>

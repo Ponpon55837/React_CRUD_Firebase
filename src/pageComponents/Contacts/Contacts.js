@@ -80,13 +80,15 @@ const Contacts = ({ currentUser }) => {
         <Button className='m-2' variant="outline-info"
           style={{border: 'none'}}
           disabled={page === 'Table'}
-          onClick={() => setPage('Table')}>
+          onClick={() => setPage('Table')}
+          title='Back to Table'>
           <MdKeypad fontSize='30px' />
         </Button>
         <Button className='m-2' variant="outline-info"
           style={{border: 'none'}}
           disabled={page === 'Form'}
-          onClick={() => setPage('Form')}>
+          onClick={() => setPage('Form')}
+          title={currentID === '' ? 'Add New' : 'Edit'}>
           { currentID === '' ?
             <IosAddCircleOutline fontSize='30px' /> :
             <IosHammerOutline fontSize='30px' />

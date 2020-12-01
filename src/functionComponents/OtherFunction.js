@@ -28,7 +28,7 @@ export const randomKeyValue = () => {
 export const LocatListGroupButton = ({items, setLocatValue}) => {
   return (
     <>
-      <Button className='m-2' key={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+      <Button className='m-2' key={items.locationName} title={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
     </>
   )
 }
@@ -38,7 +38,7 @@ export const locationDropdownArray = (locat, twoFuncForWeather) => {
     <>
       {
         locat.map(arr =>
-        <Dropdown.Item key={arr.id} href="#" onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>)
+        <Dropdown.Item key={arr.id} href="#" title={arr.location} onClick={() => twoFuncForWeather(arr)}>{arr.location}</Dropdown.Item>)
       }
     </>
   )

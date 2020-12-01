@@ -71,7 +71,7 @@ const UserContetModify = ({ currentUser, snapData, setPage }) => {
             onChange={handlerInputChange} />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" title='Complete Edit'>
           Update
         </Button>
         {

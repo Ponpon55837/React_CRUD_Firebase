@@ -85,12 +85,14 @@ const WeatherProfile = () => {
       <h1 className='mb-5'>This is Weather Part</h1>
       <Button className='m-2' variant="outline-primary"
         style={{border: 'none'}}
+        title='Go to PreWeather'
         disabled={weatherPage === 'preWeather'}
         onClick={() => setWeatherPage('preWeather')}>
           PreWeather
       </Button>
       <Button className='m-2' variant="outline-primary"
         style={{border: 'none'}}
+        title='Go to CountryWeather'
         disabled={weatherPage === 'countryWeather'}
         onClick={() => setWeatherPage('countryWeather')}>
           CountryWeather
