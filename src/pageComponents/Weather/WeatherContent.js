@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import LocationArrComponents from './LocationArrComponents'
 import ValueConmponents from './ValueConmponents'
 import WeatherDetail from './WeatherDetail'
-import { Container, Row, Col, Dropdown, DropdownButton, Button } from 'react-bootstrap'
+import { Container, Row, Col, Dropdown, DropdownButton, Button, Alert } from 'react-bootstrap'
 import { ReactComponent as RefreshIcon } from './images/refresh.svg'
 
 const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weatherHandler }) => {
 
   const [btnState, setBtnState] = useState(false)
   const [areaState, setAreaState] = useState('北部')
+  const [alertShow, setAlertShow] = useState(false)
 
   const twoFuncForAreaChange = (areaArr) => {
     setAreaState(areaArr.area)
@@ -26,6 +27,18 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
     weatherHandler()
     setBtnState(false)
   }
+
+  useEffect(() => {
+    const alertShowFunc = () => {
+      if(currentWeather.locationName === ''){
+        setAlertShow(true)
+      }
+      else {
+        setAlertShow(false)
+      }
+    }
+    alertShowFunc()
+  }, [currentWeather.locationName])
 
   return (
     <Container>
@@ -43,6 +56,11 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
           <Button variant="light" title='Refresh' onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
+      { alertShow &&
+        <Alert variant='warning'>
+        Please choose one city.
+        </Alert>
+      }
       <WeatherDetail initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
       <ValueConmponents currentWeather={currentWeather} textStyle={textStyle} />
     </Container>
