@@ -20,7 +20,14 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
 
   const twoFuncForWeather = (weatherArr) => {
     setCurrentWeather({...currentWeather, locationName: weatherArr.location})
-    setBtnState(true)
+
+    if(currentWeather.locationName === weatherArr.location){
+      setBtnState(false)
+    }
+    else {
+      setBtnState(true)
+    }
+
   }
 
   const twoFuncForChangeBtn = () => {
@@ -58,7 +65,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
       </Row>
       { alertShow &&
         <Alert variant='warning'>
-        Please choose one city.
+          Please choose one city.
         </Alert>
       }
       <WeatherDetail initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
