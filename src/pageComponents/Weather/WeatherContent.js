@@ -20,14 +20,12 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
 
   const twoFuncForWeather = (weatherArr) => {
     setCurrentWeather({...currentWeather, locationName: weatherArr.location})
-
     if(currentWeather.locationName === weatherArr.location){
       setBtnState(false)
     }
     else {
       setBtnState(true)
     }
-
   }
 
   const twoFuncForChangeBtn = () => {

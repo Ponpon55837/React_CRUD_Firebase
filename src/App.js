@@ -7,7 +7,7 @@ import Profile from './pageComponents/Profile/ProfilePage'
 import PhotoProfile from './pageComponents/Photo/PhotoProfile'
 import WeatherProfile from './pageComponents/Weather/WeatherProfile'
 import SignIn from './pageComponents/SignIn/SignIn'
-import SignUp2 from './pageComponents/SignUp/SignUp2'
+// import SignUp2 from './pageComponents/SignUp/SignUp2'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { projectAuth } from "./firebase/Config"
 import { bgStyle } from './style/style'
