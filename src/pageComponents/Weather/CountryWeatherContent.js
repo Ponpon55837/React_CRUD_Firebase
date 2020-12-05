@@ -48,7 +48,7 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
         locatValue === items.locationName ?
         <Card className='mb-3' key={items.locationName}>
           <Card.Header>
-            <Button variant="link" size='sm' className='mx-2' onClick={() => setLocatValue('')}>🅧</Button>
+            <Button variant="link" size='sm' className='mx-2' title='close content' onClick={() => setLocatValue('')}>🅧</Button>
             <strong className="mr-auto">{items.locationName}</strong>
           </Card.Header>
           <ListGroup>
