@@ -33,14 +33,14 @@ const CountryWeatherContent = ({ countryWeatherValue }) => {
       <ListGroup className='mb-3' hidden={cityBtn !== '六都'}>
         <ListGroup.Item>
           {sixCityValue.map((items, i) =>
-            <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
+            <LocatListGroupButton key={i} items={items} locatValue={locatValue} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
       </ListGroup>
       <ListGroup className='mb-3' hidden={cityBtn !== '其它縣市'}>
         <ListGroup.Item>
           {noneSixCity.map((items, i) =>
-            <LocatListGroupButton key={i} items={items} setLocatValue={setLocatValue} />
+            <LocatListGroupButton key={i} items={items} locatValue={locatValue} setLocatValue={setLocatValue} />
           )}
         </ListGroup.Item>
       </ListGroup>

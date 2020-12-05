@@ -25,10 +25,10 @@ export const randomKeyValue = () => {
   return Math.random().toString(36).substr(2,10) + Date.now().toString(36).substr(4,10)
 }
 
-export const LocatListGroupButton = ({items, setLocatValue}) => {
+export const LocatListGroupButton = ({items, locatValue, setLocatValue}) => {
   return (
     <>
-      <Button className='m-2' key={items.locationName} title={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
+      <Button className='m-2' key={items.locationName} disabled={locatValue === items.locationName} title={items.locationName} onClick={() => setLocatValue(`${items.locationName}`)}>{items.locationName}</Button>
     </>
   )
 }
