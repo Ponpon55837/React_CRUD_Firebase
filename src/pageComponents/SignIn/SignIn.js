@@ -19,7 +19,7 @@ const SignIn = (props) => {
     setUser({
       ...user,
       [name]: value,
-      error: '',
+      error: 'Please input correct value',
     })
   }
 
