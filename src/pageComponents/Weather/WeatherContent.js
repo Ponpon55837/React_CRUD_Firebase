@@ -53,12 +53,12 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
             <Dropdown.Item key={arr.areaid} href="#" title={arr.area} onClick={() => twoFuncForAreaChange(arr)}>{arr.area}</Dropdown.Item>
           )}
         </DropdownButton>
-        <LocationArrComponents currentWeather={currentWeather} areaState={areaState} locationArrNorth={locationArrNorth} locationArrCenter={locationArrCenter} locationArrSouth={locationArrSouth} locationArrEast={locationArrEast} twoFuncForWeather={twoFuncForWeather} />
+        <LocationArrComponents currentWeather={currentWeather} areaState={areaState} locationArrNorth={locationArrNorth} locationArrCenter={locationArrCenter} locationArrSouth={locationArrSouth} locationArrEast={locationArrEast} twoFuncForWeather={twoFuncForWeather} twoFuncForChangeBtn={twoFuncForChangeBtn} />
         { btnState ?
           <Button className='mt-2' size='md' variant='info' title='Submit' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
         }
         <Col className='mt-2' xs={4} sm={2} md={1}>
-          <Button variant="light" title='Refresh' onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
+          <Button variant="light" title='Refresh' hidden={alertShow} onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
       { alertShow &&
