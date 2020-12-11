@@ -63,7 +63,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
       </Row>
       { alertShow &&
         <Alert variant='warning'>
-          Please choose one city.
+          Please choose one city. And then click the submit button.
         </Alert>
       }
       <WeatherDetail initialValues={initialValues} currentWeather={currentWeather} setCurrentWeather={setCurrentWeather} description={description} temperature={temperature} airFlow={airFlow} rain={rain} styleSvg={styleSvg} />
