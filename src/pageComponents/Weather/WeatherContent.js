@@ -58,7 +58,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
           <Button className='mt-2' size='md' variant='info' title='Submit' onClick={() => twoFuncForChangeBtn()}>Submit</Button> : ''
         }
         <Col className='mt-2' xs={4} sm={2} md={1}>
-          <Button variant="light" title='Refresh' hidden={alertShow} onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
+          <Button variant="light" title='Refresh' hidden={btnState || alertShow} onClick={() => twoFuncForChangeBtn()}><RefreshIcon style={refreshSvg} /></Button>
         </Col>
       </Row>
       { alertShow &&
