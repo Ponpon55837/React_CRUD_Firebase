@@ -11,7 +11,7 @@ export const bgStyle = {
 }
 
 export const mainStyle = {
-  position: 'sticky',
+  position: 'fixed',
   top:'0',
   width: '100%',
   transition:'all 0.5s',
