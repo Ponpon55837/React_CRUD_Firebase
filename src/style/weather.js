@@ -49,3 +49,9 @@ export const textStyle = {
   fontWeight: '300',
   color: '#828282',
 }
+
+export const weatherAlert = {
+  display: 'flex',
+  justifyContent: 'flex-start',
+  maxWidth: '530px'
+}

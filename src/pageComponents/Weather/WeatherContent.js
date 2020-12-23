@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle } from '../../style/weather'
+import { description, temperature, airFlow, rain, styleSvg, refreshSvg, textStyle, weatherAlert } from '../../style/weather'
 import { areaArr, locationArrNorth, locationArrCenter, locationArrSouth, locationArrEast } from '../../apiComponents/weatherAPI'
 import LocationArrComponents from './LocationArrComponents'
 import ValueConmponents from './ValueConmponents'
@@ -62,7 +62,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
         </Col>
       </Row>
       { alertShow &&
-        <Alert variant='warning'>
+        <Alert variant='warning' style={weatherAlert}>
           Please choose one city. And then click the submit button.
         </Alert>
       }
