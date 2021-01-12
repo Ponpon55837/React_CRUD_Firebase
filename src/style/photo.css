@@ -33,6 +33,7 @@ body{
 /* upload form styles */
 .photo_form{
   margin: 30px auto 10px;
+  padding-top: 50px;
   text-align: center;
 }
 label input{
