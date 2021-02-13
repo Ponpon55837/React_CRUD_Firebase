@@ -13,6 +13,7 @@ const WeatherContent = ({ currentWeather, setCurrentWeather, initialValues, weat
   const [areaState, setAreaState] = useState('北部')
   const [alertShow, setAlertShow] = useState(false)
 
+  // 因為一次變動兩個func，先把areaArr.area存入AreaState中，另外接入舊有的currentWeather，但是清空locationName
   const twoFuncForAreaChange = (areaArr) => {
     setAreaState(areaArr.area)
     setCurrentWeather({...currentWeather, locationName: ''})
