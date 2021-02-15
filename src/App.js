@@ -4,10 +4,8 @@ import Navbar from './layoutComponents/Navbar'
 import Footer from './layoutComponents/Footer'
 import Contacts from './pageComponents/Contacts/Contacts'
 import Profile from './pageComponents/Profile/ProfilePage'
-import PhotoProfile from './pageComponents/Photo/PhotoProfile'
-import WeatherProfile from './pageComponents/Weather/WeatherProfile'
 import SignIn from './pageComponents/SignIn/SignIn'
-// import SignUp2 from './pageComponents/SignUp/SignUp2'
+import SignUp2 from './pageComponents/SignUp/SignUp2'
 import NotLogIn from './pageComponents/NotLogInPage'
 import { projectAuth } from "./firebase/Config"
 import { bgStyle } from './style/style'
@@ -21,7 +19,7 @@ export const useAuth = () => {
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
-  // console.log(currentUser)
+  
   const [page, setPage] = useState('NotLogIn')
 
   useEffect(() => {
@@ -53,12 +51,7 @@ const App = () => {
             <Route path='/contacts'>
               <Contacts />
             </Route>
-            <Route path='/photo'>
-              <PhotoProfile />
-            </Route>
-            <Route path='/weather'>
-              <WeatherProfile />
-            </Route>
+           
             <Route path='/'>
               <Profile currentUser={currentUser} />
             </Route>
